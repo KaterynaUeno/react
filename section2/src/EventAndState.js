@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class SimpleEvents extends Component {
+class EventAndState extends Component {
   handleClick() {
     console.log("Clicked");
   }
@@ -31,4 +31,4 @@ class SimpleEvents extends Component {
   }
 }
 
-export default SimpleEvents;
+export default EventAndState;
