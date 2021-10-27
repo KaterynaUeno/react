@@ -9,6 +9,10 @@ class App extends Component {
     this.state = {
       temp: "",
       city: "",
+      weather: "",
+      high: "",
+      low: "",
+      icon: "",
     };
   }
 
@@ -20,30 +24,41 @@ class App extends Component {
       this.setState({
         temp: resp.data.main.temp,
         city: resp.data.name,
+        high: resp.data.main.temp_max,
+        low: resp.data.main.temp_min,
+        weather: resp.data.weather[0].description,
+        icon: resp.data.weather[0].icon,
       });
     });
     const elems = document.querySelectorAll(".modal");
     const instances = window.M.Modal.init(elems);
   }
   render() {
+    const iconUrl = `http://openweathermap.org/img/w/${this.state.icon}.png`;
     return (
       <div className="App">
         <h1>
-          Weather in {this.state.city} is {this.state.temp}
+          Weather today
+          {/* Weather in {this.state.city} is {this.state.temp} */}
         </h1>
 
         <a
           className="waves-effect waves-light btn modal-trigger"
           href="#modal1"
         >
-          Modal
+          Details
         </a>
 
         {/* <!-- Modal Structure --> */}
         <div id="modal1" className="modal">
           <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h4>{this.state.city}</h4>
+            <p>
+              High: {this.state.high} - Low: {this.state.low}
+            </p>
+            <p>
+              {this.state.weather} <img src={iconUrl} />
+            </p>
           </div>
           <div className="modal-footer">
             <a
