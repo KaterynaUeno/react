@@ -16,11 +16,16 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    const url =
-      "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=78753ac2829720b600f59b287f686674";
+  componentDidMount() {}
+
+  searchCity = (event) => {
+    event.preventDefault();
+    // console.log("form submitted");
+    const city = document.getElementById("city").value;
+    console.log(city);
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=78753ac2829720b600f59b287f686674`;
     axios.get(url).then((resp) => {
-      console.log(resp.data.name);
+      // console.log(resp.data.name);
       this.setState({
         temp: resp.data.main.temp,
         city: resp.data.name,
@@ -32,23 +37,29 @@ class App extends Component {
     });
     const elems = document.querySelectorAll(".modal");
     const instances = window.M.Modal.init(elems);
-  }
+  };
   render() {
     const iconUrl = `http://openweathermap.org/img/w/${this.state.icon}.png`;
     return (
       <div className="App">
-        <h1>
-          Weather today
-          {/* Weather in {this.state.city} is {this.state.temp} */}
-        </h1>
+        <div className="row">
+          <div className="col s6 offset-s3">
+            <h1>
+              Weather today
+              {/* Weather in {this.state.city} is {this.state.temp} */}
+            </h1>
 
-        <a
-          className="waves-effect waves-light btn modal-trigger"
-          href="#modal1"
-        >
-          Details
-        </a>
-
+            <a
+              className="waves-effect waves-light btn modal-trigger"
+              href="#modal1"
+            >
+              Details
+            </a>
+            <form onSubmit={this.searchCity}>
+              <input id="city" type="text" placeholder="Enter a city name" />
+            </form>
+          </div>
+        </div>
         {/* <!-- Modal Structure --> */}
         <div id="modal1" className="modal">
           <div className="modal-content">
