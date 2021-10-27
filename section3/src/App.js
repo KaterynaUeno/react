@@ -17,10 +17,10 @@ class App extends Component {
       "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=78753ac2829720b600f59b287f686674";
     axios.get(url).then((resp) => {
       console.log(resp.data.name);
-      this.setState = {
+      this.setState({
         temp: resp.data.main.temp,
         city: resp.data.name,
-      };
+      });
     });
     const elems = document.querySelectorAll(".modal");
     const instances = window.M.Modal.init(elems);
@@ -29,8 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>
-          Weather in {this.state.city} is
-          {this.state.temp}
+          Weather in {this.state.city} is {this.state.temp}
         </h1>
 
         <a
