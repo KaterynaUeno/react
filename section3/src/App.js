@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import Headers from "./Headers";
+import Modal from "./Modal";
 
 class App extends Component {
   constructor() {
@@ -24,11 +26,13 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // console.log("component has updated");
-    const isRaining = this.state.weather.includes("rain");
-    if (isRaining) {
-      this.setState({
-        isRaining: "Rain rain go away!",
-      });
+    if (this.state.weather !== prevState.weather) {
+      const isRaining = this.state.weather.includes("rain");
+      if (isRaining) {
+        this.setState({
+          isRaining: "Rain rain go away!",
+        });
+      }
     }
   }
 
@@ -58,6 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="row">
+          <Headers />
           <div className="col s6 offset-s3">
             <h1>Weather today</h1>
 
@@ -72,6 +77,7 @@ class App extends Component {
             </form>
           </div>
         </div>
+        <Modal />
         <div id="modal1" className="modal">
           <div className="modal-content">
             <h4>{this.state.city}</h4>
