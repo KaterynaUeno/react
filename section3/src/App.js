@@ -13,17 +13,34 @@ class App extends Component {
       high: "",
       low: "",
       icon: "",
+      isRaining: "",
     };
   }
+  componentDidMount() {
+    this.getCityWeather("London");
+    const elems = document.querySelectorAll(".modal");
+    const instances = window.M.Modal.init(elems);
+  }
 
-  componentDidMount() {}
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("component has updated");
+    const isRaining = this.state.weather.includes("rain");
+    if (isRaining) {
+      this.setState({
+        isRaining: "Rain rain go away!",
+      });
+    }
+  }
 
   searchCity = (event) => {
     event.preventDefault();
     // console.log("form submitted");
     const city = document.getElementById("city").value;
-    console.log(city);
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=78753ac2829720b600f59b287f686674`;
+    this.getCityWeather(city);
+  };
+
+  getCityWeather = (city) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=77ef59c89e2314e4b004c6a6063a4a21`;
     axios.get(url).then((resp) => {
       // console.log(resp.data.name);
       this.setState({
@@ -35,8 +52,6 @@ class App extends Component {
         icon: resp.data.weather[0].icon,
       });
     });
-    const elems = document.querySelectorAll(".modal");
-    const instances = window.M.Modal.init(elems);
   };
   render() {
     const iconUrl = `http://openweathermap.org/img/w/${this.state.icon}.png`;
@@ -44,10 +59,7 @@ class App extends Component {
       <div className="App">
         <div className="row">
           <div className="col s6 offset-s3">
-            <h1>
-              Weather today
-              {/* Weather in {this.state.city} is {this.state.temp} */}
-            </h1>
+            <h1>Weather today</h1>
 
             <a
               className="waves-effect waves-light btn modal-trigger"
@@ -60,15 +72,15 @@ class App extends Component {
             </form>
           </div>
         </div>
-        {/* <!-- Modal Structure --> */}
         <div id="modal1" className="modal">
           <div className="modal-content">
             <h4>{this.state.city}</h4>
+            <p>{this.state.isRaining}</p>
             <p>
               High: {this.state.high} - Low: {this.state.low}
             </p>
             <p>
-              {this.state.weather} <img src={iconUrl} />
+              {this.state.weather} <img src={iconUrl} alt="" />
             </p>
           </div>
           <div className="modal-footer">
