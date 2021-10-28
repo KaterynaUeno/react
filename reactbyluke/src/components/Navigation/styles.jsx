@@ -3,7 +3,7 @@ import { css } from '@emotion/react/macro';
 const theme = () => css`
     .test {
         background: red;
-        color: blue;
+        color: green;
     }
 
     background: green;
