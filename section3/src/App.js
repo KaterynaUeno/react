@@ -16,6 +16,7 @@ class App extends Component {
       low: "",
       icon: "",
       isRaining: "",
+      showModal: true,
     };
   }
   componentDidMount() {
@@ -57,12 +58,18 @@ class App extends Component {
       });
     });
   };
+
+  removeModal = () => {
+    this.setState({
+      showModal: false,
+    });
+  };
   render() {
     const iconUrl = `http://openweathermap.org/img/w/${this.state.icon}.png`;
     return (
       <div className="App">
         <div className="row">
-          <Headers />
+          <Headers temp={this.state.temp} isRaining={this.state.isRaining} />
           <div className="col s6 offset-s3">
             <h1>Weather today</h1>
 
@@ -77,27 +84,20 @@ class App extends Component {
             </form>
           </div>
         </div>
-        <Modal />
-        <div id="modal1" className="modal">
-          <div className="modal-content">
-            <h4>{this.state.city}</h4>
-            <p>{this.state.isRaining}</p>
-            <p>
-              High: {this.state.high} - Low: {this.state.low}
-            </p>
-            <p>
-              {this.state.weather} <img src={iconUrl} alt="" />
-            </p>
-          </div>
-          <div className="modal-footer">
-            <a
-              href="#!"
-              className="modal-close waves-effect waves-green btn-flat"
-            >
-              Agree
-            </a>
-          </div>
-        </div>
+        {this.state.showModal ? (
+          <Modal
+            iconUrl={iconUrl}
+            weather={this.state.weather}
+            low={this.state.low}
+            high={this.state.high}
+            city={this.state.city}
+          />
+        ) : (
+          ""
+        )}
+        <button onClick={this.removeModal} className="btn">
+          Remove from DOM
+        </button>
       </div>
     );
   }
