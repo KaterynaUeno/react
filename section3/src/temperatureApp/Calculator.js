@@ -5,11 +5,11 @@ import TemperatureInput from "./TemperatureInput";
 class Calculator extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     this.state = { temperature: 20, scale: "C" };
   }
 
-  handleChange(e, scale) {
+  updateTemperature(e, scale) {
     this.setState({ temperature: e.target.value, scale: scale });
   }
 
@@ -30,12 +30,16 @@ class Calculator extends Component {
         <TemperatureInput
           scale="F"
           temperature={fTemp}
-          handleChange={this.handleChange}
+          handleChange={(temperature, scale) =>
+            this.setState({ temperature, scale })
+          }
         />
         <TemperatureInput
           scale="C"
           temperature={cTemp}
-          handleChange={this.handleChange}
+          handleChange={(temperature, scale) =>
+            this.setState({ temperature, scale })
+          }
         />
 
         <BoilingVerdict celsius={parseFloat(cTemp)} />
