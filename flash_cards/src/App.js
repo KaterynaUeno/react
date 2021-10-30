@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import QuizBar from "./components/QuizBar";
+import FlashCard from "./components/FlashCard";
 
 class App extends Component {
   constructor() {
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <QuizBar userChoice={this.userChoice} />
+        <FlashCard />
       </div>
     );
   }
