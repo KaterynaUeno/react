@@ -11,21 +11,33 @@ class App extends Component {
     super();
     this.state = {
       cardStyle: "Random",
+      ready: false,
     };
   }
 
   userChoice = (cardStyle) => {
     this.setState({
       cardStyle,
+      ready: false,
+    });
+  };
+
+  nowReady = () => {
+    this.setState({
+      ready: true,
     });
   };
   render() {
-    console.log(this.state.cardStyle);
+    // console.log(this.state.cardStyle);
     return (
       <div className="App align-items-center d-flex">
         <div className="container">
           <QuizBar userChoice={this.userChoice} />
-          <FlashCard />
+          <FlashCard
+            cardStyle={this.state.cardStyle}
+            nowReady={this.nowReady}
+            ready={this.state.ready}
+          />
         </div>
       </div>
     );
