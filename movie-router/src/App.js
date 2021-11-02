@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Home from "./Home";
-import About from "./About";
+import Movie from "./Movie";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           </li>
         </ul>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
+        <Route exact path="/movie/:movieid" component={Movie} />
       </div>
     </Router>
   );
