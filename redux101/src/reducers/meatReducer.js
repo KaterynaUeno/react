@@ -13,8 +13,19 @@ const seedData = [
   },
 ];
 
-function frozenReducer(state = seedData, action) {
-  return state;
+function meatReducer(state = seedData, action) {
+  if (action.type === "updateMeat") {
+    console.log("I care about this action meat");
+    const newState = [...state];
+    if (action.payload.operator === "+") {
+      newState[action.payload.index].quantity++;
+    } else if (action.payload.operator === "-") {
+      newState[action.payload.index].quantity--;
+    }
+    return newState;
+  } else {
+    return state;
+  }
 }
 
-export default frozenReducer;
+export default meatReducer;

@@ -1,14 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import frozenUpdate from "../actions/frozenInvUpdate";
+import { bindActionCreators } from "redux";
 
 class FrozenDept extends Component {
+  increment = (operator, index) => {
+    // console.log(operator, index);
+    this.props.frozenUpdate(operator, index);
+  };
   render() {
     // console.log(this.props.meatData);
     const frozenInventory = this.props.frozenData.map((item, index) => {
       return (
-        <li key={index}>
-          {item.food}: {item.quantity}
-        </li>
+        <div key={index}>
+          <li>
+            {item.food}: {item.quantity}
+          </li>
+          <input
+            type="button"
+            onClick={() => {
+              this.increment("+", index);
+            }}
+            value="+"
+          />
+          <input
+            type="button"
+            onClick={() => {
+              this.increment("-", index);
+            }}
+            value="-"
+          />
+        </div>
       );
     });
     return (
@@ -24,9 +46,15 @@ class FrozenDept extends Component {
 function mapStateToProps(state) {
   return {
     frozenData: state.frozen,
-    meatData: state.meat,
   };
 }
-
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      frozenUpdate: frozenUpdate,
+    },
+    dispatch
+  );
+}
 // export default FrozenDept;
-export default connect(mapStateToProps)(FrozenDept);
+export default connect(mapStateToProps, mapDispatchToProps)(FrozenDept);

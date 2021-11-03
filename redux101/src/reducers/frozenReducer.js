@@ -14,7 +14,18 @@ const seedData = [
 ];
 
 function frozenReducer(state = seedData, action) {
-  return state;
+  if (action.type === "updateFrozen") {
+    console.log("Icare about this action");
+    const newState = [...state];
+    if (action.payload.operator === "+") {
+      newState[action.payload.index].quantity++;
+    } else if (action.payload.operator === "-") {
+      newState[action.payload.index].quantity--;
+    }
+    return newState;
+  } else {
+    return state;
+  }
 }
 
 export default frozenReducer;
