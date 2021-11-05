@@ -1,9 +1,46 @@
 import React, { Component } from "react";
-import "./navBar.css";
+import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
-    return <h1>Nav Bar</h1>;
+    let navColor = "transparent";
+    if (this.props.location.pathname !== "/") {
+      navColor = "pink";
+    }
+    return (
+      <div className="container-fluid nav">
+        <div className="row">
+          <nav className={navColor}>
+            <div className="nav-wrapper">
+              <Link to="/" className="left">
+                airbnb
+              </Link>
+              <ul id="nav-mobile" className="right">
+                <li>
+                  <Link to="/">English(UK)</Link>
+                </li>
+                <li>
+                  <Link to="/">£</Link>
+                </li>
+                <li>
+                  <Link to="/">Become a host</Link>
+                </li>
+                <li>
+                  <Link to="/">Help</Link>
+                </li>
+                <li>
+                  <Link to="/">Sign up</Link>
+                </li>
+                <li>
+                  <Link to="/">Log in</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    );
   }
 }
 
