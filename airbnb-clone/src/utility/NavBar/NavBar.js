@@ -21,7 +21,7 @@ class NavBar extends Component {
                   <Link to="/">English(UK)</Link>
                 </li>
                 <li>
-                  <Link to="/">£</Link>
+                  <Link to="/">$</Link>
                 </li>
                 <li>
                   <Link to="/">Become a host</Link>
