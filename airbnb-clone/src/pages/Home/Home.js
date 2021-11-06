@@ -23,18 +23,24 @@ class Home extends Component {
     }
 
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="home col s12">
-            <div className="upper-fold">
-              <SearchBox />
+      <>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="home col s12">
+              <div className="upper-fold">
+                <SearchBox />
+              </div>
             </div>
           </div>
-          <div className="col s12">
-            <Cities cities={this.state.cities} />
+        </div>
+        <div className="container-fluid lower-fold">
+          <div className="row">
+            <div className="col s12">
+              <Cities cities={this.state.cities} header="Recommended Cities" />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
