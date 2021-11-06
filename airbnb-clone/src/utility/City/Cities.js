@@ -1,5 +1,6 @@
 import React from "react";
 import City from "./City";
+import SlickSlider from "../Slider/Slider";
 
 function Cities(props) {
   const cities = props.cities.map((city, index) => {
@@ -9,7 +10,7 @@ function Cities(props) {
       </div>
     );
   });
-  return cities;
+  return <SlickSlider elements={cities} />;
 }
 
 export default Cities;
