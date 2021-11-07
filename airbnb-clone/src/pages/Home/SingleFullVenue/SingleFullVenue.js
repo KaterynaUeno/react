@@ -31,10 +31,25 @@ class SingleFullVenue extends Component {
           <img src={this.state.singleVenue.imageUrl} alt="" />
         </div>
         <div className="col s8 location-details offset-s2 ">
-          <div className="location">{this.state.singleVenue.location}</div>
-          <div className="title">{this.state.singleVenue.title}</div>
-          <div className="guests">{this.state.singleVenue.guests}</div>
-          {this.state.points}
+          <div className="col s8 left-details">
+            <div className="location">{this.state.singleVenue.location}</div>
+            <div className="title">{this.state.singleVenue.title}</div>
+            <div className="guests">{this.state.singleVenue.guests}</div>
+            {this.state.points}
+            <div className="details">{this.state.singleVenue.details}</div>
+            <div className="details">{this.state.singleVenue.amenities}</div>
+          </div>
+          <div className="col s4 right-details">
+            <div className="price-per-day">
+              ${this.state.singleVenue.pricePerNight}
+              <span>/night</span>
+              <div className="rating">
+                {" "}
+                <i className="material-icons tiny">star</i>
+                {this.state.singleVenue.rating}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
