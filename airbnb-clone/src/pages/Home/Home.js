@@ -4,12 +4,14 @@ import SearchBox from "./SearchBox";
 import Spinner from "../../utility/Spinner/Spinner";
 import axios from "axios";
 import Cities from "../../utility/City/Cities";
+import Activities from "../../utility/Activity/Activities";
 class Home extends Component {
   state = {
     cities: [],
     europeCities: {},
     asiaCities: {},
     exoticCities: {},
+    activities: [],
   };
   async componentDidMount() {
     const citiesUrl = `${window.apiHost}/cities/recommended`;
@@ -39,8 +41,14 @@ class Home extends Component {
         exoticCities,
       });
     });
+    const activitiesUrl = `${window.apiHost}/activities/today`;
+    const activities = await axios.get(activitiesUrl);
+    this.setState({
+      activities: activities.data,
+    });
   }
   render() {
+    // console.log(this.state.activities);
     if (this.state.cities.length === 0) {
       return <Spinner />;
     }
@@ -58,6 +66,9 @@ class Home extends Component {
         </div>
         <div className="container-fluid lower-fold">
           <div className="row">
+            <div className="col s12">
+              <Activities activities={this.state.activities} />
+            </div>
             <div className="col s12">
               <Cities cities={this.state.cities} header="Recommended Cities" />
             </div>

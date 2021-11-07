@@ -5,8 +5,8 @@ import SlickSlider from "../Slider/Slider";
 function Cities(props) {
   const cities = props.cities.map((city, index) => {
     return (
-      <div className="col s3">
-        <City city={city} key={index} />
+      <div key={index} className="col s3">
+        <City city={city} />
       </div>
     );
   });
