@@ -78,7 +78,7 @@ class SearchBox extends Component {
           <div className="col m12 submit-btn">
             <div className="input-filed" id="submit-btn">
               <input
-                className="btn-large waves-effect waves-light red accent-2"
+                className="btn-large waves-effect waves-light pink"
                 type="submit"
               />
             </div>

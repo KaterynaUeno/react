@@ -12,7 +12,12 @@ class Activities extends Component {
         </div>
       );
     });
-    return <div className="activities">{activities}</div>;
+    return (
+      <div className="activities">
+        <h1 className="main-header-text">{this.props.header}</h1>
+        {activities}
+      </div>
+    );
   }
 }
 
