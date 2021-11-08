@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import NavBar from "./utility/NavBar/NavBar";
 import SingleFullVenue from "./pages/Home/SingleFullVenue/SingleFullVenue";
+import Modal from "./utility/Modal/Modal";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" component={NavBar} />
       <Route exact path="/" component={Home} />
       <Route exact path="/venue/:venueid" component={SingleFullVenue} />
+      <Route path="/" component={Modal} />
     </Router>
   );
 }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 class NavBar extends Component {
   render() {
@@ -18,7 +20,7 @@ class NavBar extends Component {
               </Link>
               <ul id="nav-mobile" className="right">
                 <li>
-                  <Link to="/">English(UK)</Link>
+                  <Link to="/">English</Link>
                 </li>
                 <li>
                   <Link to="/">$</Link>
@@ -43,5 +45,9 @@ class NavBar extends Component {
     );
   }
 }
-
+function mapDispatchToProps(dispatcher) {
+  return bindActionCreators({
+    openModal: openModal,
+  });
+}
 export default NavBar;
