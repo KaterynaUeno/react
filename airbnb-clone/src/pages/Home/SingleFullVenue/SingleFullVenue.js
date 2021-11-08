@@ -23,6 +23,9 @@ class SingleFullVenue extends Component {
     });
     this.setState({ singleVenue, points });
   }
+  reserve = (event) => {
+    console.log(event);
+  };
   render() {
     // console.log(this.state.singleVenue);
     return (
@@ -47,6 +50,34 @@ class SingleFullVenue extends Component {
                 {" "}
                 <i className="material-icons tiny">star</i>
                 {this.state.singleVenue.rating}
+              </div>
+              <div className="col s6">
+                Check-in
+                <input type="date" onChange={this.changeCheckin} />
+              </div>
+              <div className="col s6">
+                Check-Out
+                <input type="date" onChange={this.changeCheckout} />
+              </div>
+              <div className="col s12">
+                <select
+                  className="browser-default"
+                  onChange={this.changeNumber}
+                >
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7 Guests</option>
+                  <option value="8">8 Guests</option>
+                </select>
+              </div>
+              <div className="col s12 center">
+                <button onClick={this.reserve} className="btn pink">
+                  Reserve
+                </button>
               </div>
             </div>
           </div>
