@@ -1,5 +1,4 @@
-const initState = {openClose = false, content = ""};
-
+const initState = { openClose: "closed", content: "" };
 
 // function siteModal(state = initState, action) {
 //   if(action.type === "OPEN_MODAL"){
@@ -10,9 +9,9 @@ const initState = {openClose = false, content = ""};
 
 // export default siteModal;
 
-export default(state = initState, action)=> {
-  if(action.type === "OPEN_MODAL"){
+export default (state = initState, action) => {
+  if (action.type === "OPEN_MODAL") {
     return action.payload;
   }
-  return state
-}
+  return state;
+};

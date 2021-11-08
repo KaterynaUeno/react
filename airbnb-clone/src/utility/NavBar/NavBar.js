@@ -39,7 +39,9 @@ class NavBar extends Component {
                   onClick={() => {
                     this.props.openModal("open", "Log in");
                   }}
-                ></li>
+                >
+                  Log in{" "}
+                </li>
               </ul>
             </div>
           </nav>
@@ -49,8 +51,11 @@ class NavBar extends Component {
   }
 }
 function mapDispatchToProps(dispatcher) {
-  return bindActionCreators({
-    openModal: openModal,
-  });
+  return bindActionCreators(
+    {
+      openModal: openModal,
+    },
+    dispatcher
+  );
 }
-export default NavBar;
+export default connect(null, mapDispatchToProps)(NavBar);
