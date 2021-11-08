@@ -6,7 +6,12 @@ import "./Modal.css";
 class Modal extends Component {
   state = {};
   render() {
-    let modalInlineStyle = { display: "block" };
+    let modalInlineStyle;
+    if (this.props.siteModal.opeClose === "open") {
+      modalInlineStyle = { display: "block" };
+    } else {
+      modalInlineStyle = { display: "none" };
+    }
     return (
       <div className="site-modal" style={modalInlineStyle}>
         <div className="modal-content">
