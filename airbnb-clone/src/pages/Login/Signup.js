@@ -7,6 +7,7 @@ import Login from "./Login";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import regAction from "../../actions/regAction";
 
 const MySwal = withReactContent(Swal);
 
@@ -72,6 +73,7 @@ class Signup extends Component {
         text: "User added",
         icon: "success",
       });
+      this.props.regAction(response.data);
     }
   };
   render() {
@@ -103,16 +105,22 @@ class Signup extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
 function mapDispatchToProps(dispatcher) {
   return bindActionCreators(
     {
       openModal: openModal,
+      regAction: regAction,
     },
     dispatcher
   );
 }
 
-export default connect(mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 const SignUpInputFields = (props) => {
   return (

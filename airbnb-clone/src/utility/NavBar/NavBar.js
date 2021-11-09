@@ -8,6 +8,11 @@ import Login from "../../pages/Login/Login";
 import Signup from "../../pages/Login/Signup";
 
 class NavBar extends Component {
+  componentDidUpdate(oldProps) {
+    if (oldProps.auth.token !== this.props.auth.token) {
+      this.props.openModal("closed", "");
+    }
+  }
   render() {
     let navColor = "transparent";
     if (this.props.location.pathname !== "/") {
@@ -34,22 +39,31 @@ class NavBar extends Component {
                 <li>
                   <Link to="/">Help</Link>
                 </li>
-                <li
-                  className="login-signup"
-                  onClick={() => {
-                    this.props.openModal("open", <Signup />);
-                  }}
-                >
-                  Sign up{" "}
-                </li>
-                <li
-                  className="login-signup"
-                  onClick={() => {
-                    this.props.openModal("open", <Login />);
-                  }}
-                >
-                  Log in{" "}
-                </li>
+                {this.props.auth.email ? (
+                  <>
+                    <li>Hello, {this.props.auth.email}</li>
+                    <li>Log out</li>
+                  </>
+                ) : (
+                  <>
+                    <li
+                      className="login-signup"
+                      onClick={() => {
+                        this.props.openModal("open", <Signup />);
+                      }}
+                    >
+                      Sign up
+                    </li>
+                    <li
+                      className="login-signup"
+                      onClick={() => {
+                        this.props.openModal("open", <Login />);
+                      }}
+                    >
+                      Log in{" "}
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </nav>
@@ -58,6 +72,13 @@ class NavBar extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
 function mapDispatchToProps(dispatcher) {
   return bindActionCreators(
     {
@@ -66,4 +87,4 @@ function mapDispatchToProps(dispatcher) {
     dispatcher
   );
 }
-export default connect(null, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
