@@ -3,7 +3,7 @@ import "./Login.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import openModal from "../../actions/openModal";
-// import Login from "./Login";
+import Login from "./Login";
 
 class Signup extends Component {
   constructor() {
@@ -56,9 +56,11 @@ class Signup extends Component {
             <span
               className="pointer"
               onClick={() => {
-                this.props.openModal("open");
+                this.props.openModal("open", <Login />);
               }}
-            ></span>
+            >
+              Log in
+            </span>
           </div>
         </form>
       </div>

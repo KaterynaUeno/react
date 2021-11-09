@@ -3,8 +3,17 @@ import "./Login.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import openModal from "../../actions/openModal";
-import Signup from "./Signup";
+import SignUp from "./Signup";
+
 class Login extends Component {
+  changeEmail = (e) => this.setState({ email: e.target.value });
+  changePassword = (e) => this.setState({ password: e.target.value });
+
+  submitLogin = (e) => {
+    e.preventDefault();
+    console.log(this.state.email);
+    console.log(this.state.password);
+  };
   render() {
     return (
       <div className="login-form">
@@ -16,11 +25,13 @@ class Login extends Component {
             <div className="or-divider"></div>
           </div>
           <input
+            onChange={this.changeEmail}
             type="text"
             className="browser-default"
             placeholder="Email address"
           />
           <input
+            onChange={this.changePassword}
             type="password"
             className="browser-default"
             placeholder="Password"
@@ -30,8 +41,9 @@ class Login extends Component {
           <div>
             Don't have an account?
             <span
+              className="pointer"
               onClick={() => {
-                this.props.openModal("open", <Signup />);
+                this.props.openModal("open", <SignUp />);
               }}
             >
               Sign up
@@ -42,6 +54,7 @@ class Login extends Component {
     );
   }
 }
+
 function mapDispatchToProps(dispatcher) {
   return bindActionCreators(
     {
@@ -50,4 +63,5 @@ function mapDispatchToProps(dispatcher) {
     dispatcher
   );
 }
+
 export default connect(null, mapDispatchToProps)(Login);
