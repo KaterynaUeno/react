@@ -145,3 +145,7 @@
 .pointer {
   cursor: pointer;
 }
+
+.swal2-container {
+  z-index: X !important;
+}

@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import openModal from "../../actions/openModal";
 import Login from "./Login";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 class Signup extends Component {
   constructor() {
@@ -34,10 +39,40 @@ class Signup extends Component {
       ),
     });
   };
-  submitLogin = (e) => {
+  submitLogin = async (e) => {
     e.preventDefault();
-    console.log(this.state.email);
-    console.log(this.state.password);
+    // console.log(this.state.email);
+    // console.log(this.state.password);
+    const url = `${window.apiHost}/users/signup`;
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    const response = await axios.post(url, data);
+    console.log(response.data.msg);
+    const token = response.data.token;
+    const urlToken = `${window.apiHost}/users/token-check`;
+    const responseToken = await axios.post(urlToken, { token });
+    // console.log(responseToken.token);
+    if (response.data.msg === "userExists") {
+      MySwal.fire({
+        title: " The email alredy exists",
+        text: "The email is alredy registered",
+        icon: "error",
+      });
+    } else if (response.data.msg === "invalidData") {
+      MySwal.fire({
+        title: "Invalid email/password",
+        text: "Please enter valid email/password",
+        icon: "error",
+      });
+    } else if (response.data.msg === "userAdded") {
+      MySwal.fire({
+        title: "User added",
+        text: "User added",
+        icon: "success",
+      });
+    }
   };
   render() {
     return (

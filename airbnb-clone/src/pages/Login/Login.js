@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import openModal from "../../actions/openModal";
 import SignUp from "./Signup";
-
+import axios from "axios";
 class Login extends Component {
   changeEmail = (e) => this.setState({ email: e.target.value });
   changePassword = (e) => this.setState({ password: e.target.value });
