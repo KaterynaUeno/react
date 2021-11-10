@@ -53,7 +53,7 @@ class Signup extends Component {
     console.log(response.data.msg);
     const token = response.data.token;
     const urlToken = `${window.apiHost}/users/token-check`;
-    const responseToken = await axios.post(urlToken, { token });
+    // const responseToken = await axios.post(urlToken, { token });
     // console.log(responseToken.token);
     if (response.data.msg === "userExists") {
       MySwal.fire({

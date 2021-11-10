@@ -30,9 +30,9 @@ class Login extends Component {
     };
     const response = await axios.post(url, data);
     console.log(response.data.msg);
-    // const token = response.data.token;
-    // const urlToken = `${window.apiHost}/users/token-check`;
-    // const responseToken = await axios.post(urlToken, { token });
+    const token = response.data.token;
+    const urlToken = `${window.apiHost}/users/token-check`;
+    const responseToken = await axios.post(urlToken, { token });
     // console.log(responseToken);
     if (response.data.msg === "badPass") {
       MySwal.fire({

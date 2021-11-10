@@ -7,6 +7,11 @@ import { connect } from "react-redux";
 import openModal from "../../../actions/openModal";
 import { bindActionCreators } from "redux";
 import Login from "../../Home/../Login/Login";
+import moment from "moment";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+
+const MySwal = withReactContent(Swal);
 
 class SingleFullVenue extends Component {
   state = {
@@ -35,11 +40,75 @@ class SingleFullVenue extends Component {
     });
     this.setState({ singleVenue, points });
   }
-  reserve = (event) => {
-    console.log(event);
+
+  changeNumberofGuests = (e) => {
+    this.setState({ numberOfGuests: e.target.value });
+  };
+  changeCheckin = (e) => {
+    this.setState({ checkin: e.target.value });
+  };
+  changeCheckout = (e) => {
+    this.setState({ checkout: e.target.value });
+  };
+  reserve = async (event) => {
+    // console.log(event);
+    const startDayMoment = moment(this.state.checkin);
+    const endDayMoment = moment(this.state.checkout);
+    // console.log(startDayMoment);
+    const diffDays = endDayMoment.diff(startDayMoment, "days");
+    // console.log(diffDays);
+    if (diffDays < 1) {
+      MySwal.fire({
+        title: "Invalid date",
+        text: "Check-in day should be before check-out day",
+        icon: "error",
+      });
+    } else if (isNaN(diffDays)) {
+      MySwal.fire({
+        title: "Invalid date",
+        text: "Please enter check-out date",
+        icon: "error",
+      });
+    } else {
+      const pricePerNight = this.state.singleVenue.pricePerNight;
+      const totalPrice = pricePerNight * diffDays;
+      const scriptUrl = "https://js.stripe.com/v3";
+      const stripePublicKey =
+        "pk_test_5198HtPL5CfCPYJ3X8TTrO06ChWxotTw6Sm2el4WkYdrfN5Rh7vEuVguXyPrTezvm3ntblRX8TpjAHeMQfHkEpTA600waD2fMrT";
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = scriptUrl;
+        script.onload = () => {
+          resolve();
+        };
+        document.getElementsByTagName("head")[0].appendChild(script);
+      });
+      const stripe = window.Stripe(stripePublicKey);
+      const sessionStripeUrl = `${window.apiHost}/payment/create-session`;
+      const response = await axios.post(sessionStripeUrl);
+      console.log(response);
+      const data = {
+        venueData: this.state.singleVenue,
+        totalPrice,
+        pricePerNight,
+        checkin: this.state.checkin,
+        checkout: this.state.checkout,
+        token: this.props.auth.token,
+        currency: "USD",
+      };
+      const sessionVar = await axios.post(sessionStripeUrl, data);
+      console.log(sessionVar.data);
+      // stripe
+      // .redirectToCheckout({
+      //   sessionId: sessionVar.data.id,
+      // })
+      // .then((result) => {
+      //   console.log(result);
+      // });
+    }
   };
   render() {
-    // console.log(this.state.singleVenue);
     return (
       <div className="row single-venue">
         <div className="col s12 center">

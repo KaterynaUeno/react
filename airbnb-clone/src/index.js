@@ -22,7 +22,7 @@ const theStore = applyMiddleware(reduxPromise)(createStore)(persistedReducer);
 const persistor = persistStore(theStore);
 ReactDOM.render(
   <Provider store={theStore}>
-    <PersistGate loading={Spinner} persistor={persistor}>
+    <PersistGate loading={<Spinner />} persistor={persistor}>
       <App />
     </PersistGate>
   </Provider>,
