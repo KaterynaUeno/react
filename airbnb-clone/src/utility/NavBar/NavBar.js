@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import openModal from "../../actions/openModal";
 import Login from "../../pages/Login/Login";
 import Signup from "../../pages/Login/Signup";
+import logoutAction from "../../actions/logoutAction";
 
 class NavBar extends Component {
   componentDidUpdate(oldProps) {
@@ -42,7 +43,13 @@ class NavBar extends Component {
                 {this.props.auth.email ? (
                   <>
                     <li>Hello, {this.props.auth.email}</li>
-                    <li>Log out</li>
+                    <li
+                      onClick={() => {
+                        this.props.logoutAction();
+                      }}
+                    >
+                      Log out
+                    </li>
                   </>
                 ) : (
                   <>
@@ -83,6 +90,7 @@ function mapDispatchToProps(dispatcher) {
   return bindActionCreators(
     {
       openModal: openModal,
+      logoutAction: logoutAction,
     },
     dispatcher
   );
