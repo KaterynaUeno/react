@@ -10,6 +10,7 @@ import Login from "../../Home/../Login/Login";
 import moment from "moment";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
+import loadScript from "../../../utility/utilityFunctions/loadScript";
 
 const MySwal = withReactContent(Swal);
 
@@ -72,42 +73,87 @@ class SingleFullVenue extends Component {
     } else {
       const pricePerNight = this.state.singleVenue.pricePerNight;
       const totalPrice = pricePerNight * diffDays;
+
       const scriptUrl = "https://js.stripe.com/v3";
       const stripePublicKey =
         "pk_test_5198HtPL5CfCPYJ3X8TTrO06ChWxotTw6Sm2el4WkYdrfN5Rh7vEuVguXyPrTezvm3ntblRX8TpjAHeMQfHkEpTA600waD2fMrT";
-      await new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = scriptUrl;
-        script.onload = () => {
-          resolve();
-        };
-        document.getElementsByTagName("head")[0].appendChild(script);
-      });
+      // Moving the below code to it's own module
+      // await new Promise((resolve, reject)=>{
+      //     const script = document.createElement('script');
+      //     script.type = 'text/javascript';
+      //     script.src = scriptUrl;
+      //     script.onload = ()=>{
+      //         console.log("The script has loaded!")
+      //         resolve();
+      //     }
+      //     document.getElementsByTagName('head')[0].appendChild(script);
+      //     console.log("The script has been added to the head!")
+      // })
+      await loadScript(scriptUrl); // we dont need a variable, we just need to wait
+      // console.log("Let's run some Stripe")
       const stripe = window.Stripe(stripePublicKey);
-      const sessionStripeUrl = `${window.apiHost}/payment/create-session`;
-      const response = await axios.post(sessionStripeUrl);
-      console.log(response);
+      const stripeSessionUrl = `${window.apiHost}/payment/create-session`;
       const data = {
         venueData: this.state.singleVenue,
         totalPrice,
+        diffDays,
         pricePerNight,
-        checkin: this.state.checkin,
-        checkout: this.state.checkout,
+        checkIn: this.state.checkIn,
+        checkOut: this.state.checkOut,
         token: this.props.auth.token,
+        numberOfGuests: this.state.numberOfGuests,
         currency: "USD",
       };
-      const sessionVar = await axios.post(sessionStripeUrl, data);
+
+      const sessionVar = await axios.post(stripeSessionUrl, data);
       console.log(sessionVar.data);
-      // stripe
-      // .redirectToCheckout({
-      //   sessionId: sessionVar.data.id,
-      // })
-      // .then((result) => {
-      //   console.log(result);
-      // });
+      stripe
+        .redirectToCheckout({
+          sessionId: sessionVar.data.id,
+        })
+        .then((result) => {
+          console.log(result);
+          //if the network fails, this will run
+        });
     }
   };
+
+  //     const scriptUrl = "https://js.stripe.com/v3";
+  //     const stripePublicKey =
+  //       "pk_test_5198HtPL5CfCPYJ3X8TTrO06ChWxotTw6Sm2el4WkYdrfN5Rh7vEuVguXyPrTezvm3ntblRX8TpjAHeMQfHkEpTA600waD2fMrT";
+  //     await new Promise((resolve, reject) => {
+  //       const script = document.createElement("script");
+  //       script.type = "text/javascript";
+  //       script.src = scriptUrl;
+  //       script.onload = () => {
+  //         resolve();
+  //       };
+  //       document.getElementsByTagName("head")[0].appendChild(script);
+  //     });
+  //     const stripe = window.Stripe(stripePublicKey);
+  //     const sessionStripeUrl = `${window.apiHost}/payment/create-session`;
+  //     const response = await axios.post(sessionStripeUrl);
+  //     console.log(response);
+  //     const data = {
+  //       venueData: this.state.singleVenue,
+  //       totalPrice,
+  //       pricePerNight,
+  //       checkin: this.state.checkin,
+  //       checkout: this.state.checkout,
+  //       token: this.props.auth.token,
+  //       currency: "USD",
+  //     };
+  //     const sessionVar = await axios.post(sessionStripeUrl, data);
+  //     console.log(sessionVar.data);
+  //     // stripe
+  //     // .redirectToCheckout({
+  //     //   sessionId: sessionVar.data.id,
+  //     // })
+  //     // .then((result) => {
+  //     //   console.log(result);
+  //     // });
+  //   }
+  // };
   render() {
     return (
       <div className="row single-venue">
