@@ -73,3 +73,8 @@
   margin-bottom: 20px;
   font-weight: normal;
 }
+
+h4.link {
+  cursor: pointer;
+  color: pink;
+}

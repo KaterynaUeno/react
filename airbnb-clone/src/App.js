@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import NavBar from "./utility/NavBar/NavBar";
 import SingleFullVenue from "./pages/Home/SingleFullVenue/SingleFullVenue";
 import Modal from "./utility/Modal/Modal";
+import CityVenues from "./pages/Home/CityVenues/CityVenues";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/venue/:venueid" component={SingleFullVenue} />
       <Route path="/" component={Modal} />
+      <Route exact path="/city/:cityName" component={CityVenues} />
     </Router>
   );
 }

@@ -9,7 +9,7 @@ class City extends Component {
     return (
       <div className="city col s12">
         {/* {this.props.city.cityName} */}
-        <Link to={`/city/${id}`}>
+        <Link to={`/city/${cityName}`}>
           <div className="image">
             <img src={image} alt="" />
           </div>

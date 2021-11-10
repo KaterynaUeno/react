@@ -1,9 +1,21 @@
 import React, { Component } from "react";
+import "../../../App.css";
 import "./SingleFullVenue.css";
 import axios from "axios";
 import Point from "./Point";
+import { connect } from "react-redux";
+import openModal from "../../../actions/openModal";
+import { bindActionCreators } from "redux";
+import Login from "../../Home/../Login/Login";
+
 class SingleFullVenue extends Component {
-  state = { singleVenue: {}, points: [] };
+  state = {
+    singleVenue: {},
+    points: [],
+    checkin: "",
+    checkout: "",
+    numberOfGuests: 1,
+  };
   async componentDidMount() {
     const venueid = this.props.match.params.venueid;
     // console.log(venueId);
@@ -75,9 +87,25 @@ class SingleFullVenue extends Component {
                 </select>
               </div>
               <div className="col s12 center">
-                <button onClick={this.reserve} className="btn pink">
-                  Reserve
-                </button>
+                {this.props.auth.token ? (
+                  <button onClick={this.reserve} className="btn pink">
+                    {" "}
+                    Reserve
+                  </button>
+                ) : (
+                  <div>
+                    You must{" "}
+                    <h4
+                      className="link"
+                      onClick={() => {
+                        this.props.openModal("open", <Login />);
+                      }}
+                    >
+                      Log in{" "}
+                    </h4>
+                    log in to reserve a venue{" "}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -87,4 +115,18 @@ class SingleFullVenue extends Component {
   }
 }
 
-export default SingleFullVenue;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      openModal,
+    },
+    dispatch
+  );
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SingleFullVenue);
