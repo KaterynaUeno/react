@@ -32,8 +32,14 @@ class Account extends Component {
         upcomingBookings.push(booking);
       }
     });
+    this.setState({
+      pastBookings,
+      upcomingBookings,
+    });
+    // console.log(upcomingBookings);
   }
   render() {
+    const { pastBookings, upcomingBookings } = this.state;
     return (
       <div className="account container-fluid">
         <AccountSideBar />
@@ -44,16 +50,16 @@ class Account extends Component {
               path="/account"
               render={() => <h1>Choose an option from the left</h1>}
             />
-            <Route
-              exact
-              path="/acount/reservations/confirmed"
-              component={Bookings}
-            />
-            <Route
-              exact
-              path="/acount/reservations/past"
-              component={Bookings}
-            />
+            <Route exact path="/acount/reservations/confirmed">
+              <Bookings
+                type="upcoming"
+                bookings={upcomingBookings}
+                token={this.props.auth.token}
+              />
+            </Route>
+            <Route exact path="/acount/reservations/past">
+              <Bookings type="past" bookings={pastBookings} />
+            </Route>
             <Route
               exact
               path="/acount/change-pass"

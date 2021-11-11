@@ -8,6 +8,7 @@ import Modal from "./utility/Modal/Modal";
 import CityVenues from "./pages/Home/CityVenues/CityVenues";
 import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess";
 import Account from "./pages/Account/Account";
+import Search from "./pages/Search/Search";
 function App() {
   return (
     <Router>
@@ -16,6 +17,7 @@ function App() {
       <Route exact path="/venue/:venueid" component={SingleFullVenue} />
       <Route path="/" component={Modal} />
       <Route exact path="/city/:cityName" component={CityVenues} />
+      <Route path="/search/:searchTerm" component={Search} />
       <Route
         exact
         path="/payment-success/:stripeToken"
