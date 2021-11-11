@@ -7,7 +7,7 @@ import SingleFullVenue from "./pages/Home/SingleFullVenue/SingleFullVenue";
 import Modal from "./utility/Modal/Modal";
 import CityVenues from "./pages/Home/CityVenues/CityVenues";
 import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess";
-
+import Account from "./pages/Account/Account";
 function App() {
   return (
     <Router>
@@ -21,6 +21,7 @@ function App() {
         path="/payment-success/:stripeToken"
         component={PaymentSuccess}
       />
+      <Route path="/account" component={Account} />
     </Router>
   );
 }
