@@ -1,11 +1,15 @@
 import React from "react";
 import "./App.css";
-import ErrorExample from "./components/ErrorExample";
+// import ErrorExample from "./components/ErrorExample";
+import UseStateCounter from "./components/UseStateCounter";
+// import UseStateObject from "./components/UseStateObject";
 
 function App() {
   return (
     <div className="container">
-      <ErrorExample />
+      {/* <ErrorExample /> */}
+      {/* <UseStateObject /> */}
+      <UseStateCounter />
     </div>
   );
 }
