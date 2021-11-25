@@ -15,6 +15,15 @@ export default function NavBar() {
           </button>
         </div>
         <ul className="nav-links"></ul>
+        <li>
+          <button className="link-btn">products</button>
+        </li>
+        <li>
+          <button className="link-btn">developers</button>
+        </li>
+        <li>
+          <button className="link-btn">company</button>
+        </li>
       </div>
     </nav>
   );
