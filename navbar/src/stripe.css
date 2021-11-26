@@ -186,7 +186,7 @@ img.nav-logo {
   height: 65%;
   top: 0;
   left: 0;
-  background: url(./images/background.jpg);
+  background: url(./images/hero.svg);
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1;
@@ -245,7 +245,7 @@ img.nav-logo {
   .nav-links li {
     height: 100%;
   }
-  .link-btn {
+  button.link-btn {
     height: 100%;
     background: transparent;
     border-color: transparent;
