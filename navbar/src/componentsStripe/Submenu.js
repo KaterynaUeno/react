@@ -2,7 +2,11 @@ import React, { useEffect, useRef } from "react";
 import { useGlobalContext } from "../stripeContext";
 
 const Submenu = () => {
-  const { isSubmenuOpen, location } = useGlobalContext();
+  const {
+    isSubmenuOpen,
+    location,
+    page: { page, links },
+  } = useGlobalContext();
   const container = useRef(null);
   useEffect(() => {
     const submenu = container.current;
@@ -14,7 +18,20 @@ const Submenu = () => {
     <aside
       className={`${isSubmenuOpen ? "submenu show" : "submenu"}`}
       ref={container}
-    ></aside>
+    >
+      <h4>{page}</h4>
+      <div className={`submenu-center col-2`}>
+        {links.map((link, index) => {
+          const { label, icon, url } = link;
+          return (
+            <a key={index} href={url}>
+              {icon}
+              {label}
+            </a>
+          );
+        })}
+      </div>
+    </aside>
   );
 };
 
