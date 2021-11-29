@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useCallback } from "react";
+// import { useCallback } from "react";
 
+const singleUrl =
+  "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=13501";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext();
 
@@ -8,13 +10,14 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("a");
   const [cocktail, setCocktail] = useState([]);
+  const [id, setId] = useState("");
 
   const fetchCocktail = async () => {
     setLoading(true);
     try {
       const response = await fetch(`${url}${search}`);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       const { drinks } = data;
       if (drinks) {
         const drinksData = drinks.map((drink) => {
@@ -47,6 +50,39 @@ const AppProvider = ({ children }) => {
     fetchCocktail();
   }, [search]);
 
+  const fetchSingleCocktail = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${singleUrl}${id}`);
+      const data = await response.json();
+      console.log(data);
+      // const response = await fetch(`${singleUrl}${id}`);
+      // const singleData = await response.json();
+      // console.log(singleData);
+      if (data.drinks) {
+        const {
+          strDrink: name,
+          strDrinkThumb: image,
+          strAlcoholic: info,
+        } = data.drinks[0];
+        const newCocktail = {
+          name,
+          image,
+          info,
+        };
+
+        setCocktail(newCocktail);
+      } else {
+        setCocktail([]);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchSingleCocktail();
+  }, []);
   return (
     <AppContext.Provider
       value={{
