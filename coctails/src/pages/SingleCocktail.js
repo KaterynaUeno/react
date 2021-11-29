@@ -15,7 +15,7 @@ const SingleCocktail = () => {
   }
   const { name, image } = cocktail;
   return (
-    <section>
+    <section className="section cocktail-section">
       <Link to="/" className="btn btn-primary">
         back Home
       </Link>
