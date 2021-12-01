@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context";
 const SingleCocktail = () => {
   // const [loading, setLoading] = React.useState(false);
   // const [cocktail, setCocktail] = React.useState(null);
-  const { cocktail, loading, id } = useGlobalContext();
+  const { cocktail, loading } = useGlobalContext();
   if (loading) {
     return <Loading />;
   }

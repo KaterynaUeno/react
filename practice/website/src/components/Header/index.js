@@ -51,31 +51,33 @@ const Button = styled.button`
   }
 `;
 const HamburgerBtn = styled.button`
-position: relative;
-background-color: white;
-width: 2rem;
-height: 2px;
-cursor: pointer;
-
-&::before,&::after{
-  content: "",
-  background-color: var(--navtext)
+  position: relative;
+  background-color: white;
   width: 2rem;
   height: 2px;
-  display:inline-block;
-  position: absolute;
-  left: 0;
-  cursor:pointer;
-  transition: all 0.3s;
-}
-&::before{
- top: 0.5rem;
- transform:rotate(0)
-}
-&::after{
- top: 0.5rem;
- transform:rotate(0)
-}`;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+    background-color: var(--navtext);
+    width: 2rem;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  &::before {
+    top: 0.5rem;
+    transform: rotate(0);
+  }
+  &::after {
+    top: 0.5rem;
+    transform: rotate(0);
+  }
+`;
 const Header = () => {
   return (
     <Headers>

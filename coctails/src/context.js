@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 // import { useCallback } from "react";
 
-const singleUrl =
-  "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=13501";
+const singleUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const AppContext = React.createContext();
 
@@ -10,7 +9,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("a");
   const [cocktail, setCocktail] = useState([]);
-  const [id, setId] = useState("");
+  const [id] = useState([]);
 
   const fetchCocktail = async () => {
     setLoading(true);
