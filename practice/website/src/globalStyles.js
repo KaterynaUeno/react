@@ -8,11 +8,12 @@ ${"" /*Variables*/}
  /* Colors */
  --background: #eff7f9;
  --black:#0a0b10;
- --purple:#803bec;
+ --purple:#aa52d9;
  --pink:#e5a1f8;
  --white:#fff;
- --nav:#35353f;
+ --nav:#787894;
  --nav2:#3f3d56;
+ --navtext:#f5f5f7;
 }
 
 //basic style
