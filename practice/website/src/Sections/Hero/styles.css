@@ -1,0 +1,8 @@
+.hero-section {
+  width: 100vw;
+  height: 45vw;
+  background-color: #171f47;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
