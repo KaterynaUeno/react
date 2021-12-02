@@ -5,4 +5,64 @@
   display: flex;
   justify-content: center;
   position: relative;
+  color: #f3ebf3;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+}
+
+.left-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  line-height: 1.5;
+}
+.topic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9494a4;
+  font-weight: 700;
+  font-size: calc(0.4rem + 0.4vw);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+h1.title {
+  font-size: calc(2rem + 1vw);
+  line-height: 1.2;
+  padding: 0.5rem 0;
+}
+
+h5.subtext {
+  font-size: calc(0.5rem + 0.5 vw);
+  color: #c3c2c7;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: calc(0.5rem + 0.5vw);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+.btn:active {
+  transform: scale(0.9);
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 15px 20px rgba(156, 46, 229, 0.4);
+}
+.mobile-img {
+  width: 1.2rem;
 }

@@ -4,6 +4,7 @@ import Pink from "../../assets/blobPink.png";
 import White from "../../assets/blob white.png";
 import Purple from "../../assets/blob purple.png";
 import Arrow from "../../assets/Arrow Right.svg";
+import Mobile from "../../assets/mobile.svg";
 const Blob = styled.div`
   width: 100%;
   position: absolute;
@@ -45,22 +46,27 @@ const HeroSection = () => {
       <div className="main-content">
         <div className="left-block">
           <div className="topic">
-            <div className="circle">
-              <span>Hello, we're a design company</span>
-            </div>
+            <span className="circle">Hello, we're a design company</span>
           </div>
-          <div className="title">
-            Experts inWebsite & Development based in London
-          </div>
-          <div className="subtext">
+          <h1 className="title">
+            Experts in Website Design & Development based in London
+          </h1>
+          <h5 className="subtext">
             We merge imagination and technology to help brands grow in an age of
             digital transformation
-          </div>
+          </h5>
           <button className="btn">
             Get in touch &nbsp;
-            <img src={Arrow} alt="" width="400" height="400"></img>
+            <img src={Arrow} alt="" className="mobile-img"></img>
           </button>
         </div>
+        <img
+          src={Mobile}
+          alt=""
+          width="400"
+          height="400"
+          className="mobile"
+        ></img>
       </div>
     </div>
   );
