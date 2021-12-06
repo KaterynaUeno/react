@@ -1,14 +1,23 @@
 import "./styles.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Pink from "../../assets/blobPink.png";
 import White from "../../assets/blob white.png";
 import Purple from "../../assets/blob purple.png";
 import Arrow from "../../assets/Arrow Right.svg";
 import Mobile from "../../assets/mobile.svg";
+
+const upAndDown = keyframes`
+0% {transform:translateY(-5px);}
+50% {transform:translateY(10px);}
+100% {transform:translateY(-5px);}
+`;
 const Blob = styled.div`
   width: 100%;
   position: absolute;
   right: 0;
+  @media only Screen and (max-width: 48em) {
+    opacity: 0.5;
+  } ;
 `;
 const PinkBlob = styled.div`
   width: calc(10% + 10vw);
@@ -29,6 +38,21 @@ const WhiteBlob = styled.div`
   top: calc(10rem + 10vw);
   z-index: 3;
 `;
+
+const MobileImg = styled.img`
+  max-width: 100%;
+  width: cal(30% + 30vw);
+  z-index: 7;
+  height: auto;
+  animation: ${upAndDown} 2.5s ease infinite;
+  @media only Screen and (max-width: 48em) {
+    align-self: flex-start;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+  }
+`;
+
 const HeroSection = () => {
   return (
     <div className="hero-section">
@@ -60,13 +84,7 @@ const HeroSection = () => {
             <img src={Arrow} alt="" className="mobile-img"></img>
           </button>
         </div>
-        <img
-          src={Mobile}
-          alt=""
-          width="400"
-          height="400"
-          className="mobile"
-        ></img>
+        <MobileImg src={Mobile} alt="" width="400" height="400" />
       </div>
     </div>
   );
