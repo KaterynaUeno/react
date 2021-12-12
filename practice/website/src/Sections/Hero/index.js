@@ -8,7 +8,7 @@ import Mobile from "../../assets/mobile.svg";
 
 const upAndDown = keyframes`
 0% {transform:translateY(-5px);}
-50% {transform:translateY(10px);}
+50% {transform:translateY(50px);}
 100% {transform:translateY(-5px);}
 `;
 const Blob = styled.div`
@@ -50,6 +50,9 @@ const MobileImg = styled.img`
     position: absolute;
     bottom: 0;
     opacity: 0.5;
+  }
+  @media only Screen and (max-width: 40em) {
+    display: none;
   }
 `;
 
