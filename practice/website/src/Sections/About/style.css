@@ -1,0 +1,13 @@
+img.wave {
+  width: auto;
+  height: 400px;
+}
+
+.about {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

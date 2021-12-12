@@ -1,7 +1,15 @@
-// This is About component, It will contain about us info.
-
+import "./style.css";
+import wave from "../../assets/wave.svg";
+import hand from "../../assets/hand.svg";
 const About = () => {
-  return <div>About Component</div>;
+  return (
+    <section className="about">
+      <img src={wave} alt="" className="wave" />
+      <div className="hand">
+        <img src={hand} alt="" className="hand" />
+      </div>
+    </section>
+  );
 };
 
 export default About;
