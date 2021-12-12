@@ -11,3 +11,9 @@ img.wave {
   justify-content: center;
   align-items: center;
 }
+
+img.hand {
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
+}
