@@ -38,15 +38,21 @@ img.hand {
     margin: 3rem calc(3rem + 3vw);
   }
 }
-h1 {
-  font-size: 35px;
+h1#animation {
+  font-size: 55px;
   display: inline-block;
+  color: #ffc009;
+  animation-name: change;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }
-
-.rocket {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@keyframes change {
+  from {
+    color: #ffc009;
+  }
+  to {
+    color: #171f47;
+  }
 }
 
 .text {
@@ -63,6 +69,11 @@ img.person {
 }
 .content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  line-height: 30px;
+}
+
+h3 {
+  font-size: calc(1rem + 1vw);
 }
