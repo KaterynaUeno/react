@@ -2,6 +2,11 @@ img.wave {
   width: auto;
   height: 400px;
 }
+@media screen and (max-width: 48em) {
+  img.wave {
+    overflow: hidden;
+  }
+}
 
 .about {
   width: 100vw;
@@ -16,4 +21,18 @@ img.hand {
   position: absolute;
   bottom: 1rem;
   right: 0;
+}
+
+.bottom-section {
+  margin: 0 15 rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 35px;
+  display: inline-block;
 }
