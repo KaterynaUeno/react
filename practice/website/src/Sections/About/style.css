@@ -42,3 +42,27 @@ h1 {
   font-size: 35px;
   display: inline-block;
 }
+
+.rocket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  position: relative;
+  width: 40%;
+  display: flex;
+}
+
+img.person {
+  width: 50%;
+  position: absolute;
+  bottom: 100%;
+  right: 0px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

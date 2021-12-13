@@ -13,23 +13,31 @@ const CurvedLine = styled.div`
 `;
 const About = () => {
   return (
-    <section className="about">
+    <div className="about">
       <img src={wave} alt="" className="wave" />
       <div className="bottom-section">
-        <h1>About Us</h1>
-        <CurvedLine />
+        <div>
+          <h1>About Us</h1>
+          <CurvedLine />
+        </div>
+        <div className="content">
+          <img
+            src={spaceman}
+            alt="spaceman"
+            width="200px"
+            height="350px"
+            className="spaceman"
+          />
+          <div className="text">
+            <img src={person} alt="person" width="310px" height="280px" />
+            <h3>
+              We started as a group of young, nerdy entrepreneurs hoping to
+              build a for-profit tech company that could be a vehicle for good.
+            </h3>
+          </div>
+        </div>
       </div>
-      <div className="rocket">
-        <img src={spaceman} alt="rocket" width="200px" height="350px" />
-      </div>
-      <div className="text">
-        <img src={person} alt="rocket" width="310px" height="280px" />
-      </div>
-      <p>
-        We started as a group of young, nerdy entrepreneurs hoping to build a
-        for-profit tech company that could be a vehicle for good.
-      </p>
-    </section>
+    </div>
   );
 };
 
