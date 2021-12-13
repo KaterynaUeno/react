@@ -84,6 +84,7 @@ h5.subtext {
   .btn {
     background-color: rgba(147, 18, 234, 0.4);
     box-shadow: 0px 15px 20px rgba(107, 25, 161, 0.4);
+    position: relative;
   }
 }
 
