@@ -5,6 +5,7 @@ img.wave {
 @media screen and (max-width: 48em) {
   img.wave {
     overflow: hidden;
+    display: none;
   }
 }
 
@@ -31,7 +32,12 @@ img.hand {
   align-items: center;
   flex-direction: column;
 }
-
+@media screen and (max-width: 48em) {
+  .bottom-section {
+    align-items: center;
+    margin: 3rem calc(3rem + 3vw);
+  }
+}
 h1 {
   font-size: 35px;
   display: inline-block;

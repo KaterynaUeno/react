@@ -80,11 +80,11 @@ h5.subtext {
   transform: scale(1.1);
   box-shadow: 0px 15px 20px rgba(156, 46, 229, 0.4);
 }
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 48em) {
   .btn {
+    padding: 0.2rem 1rem;
     background-color: rgba(147, 18, 234, 0.4);
     box-shadow: 0px 15px 20px rgba(107, 25, 161, 0.4);
-    position: relative;
   }
 }
 
