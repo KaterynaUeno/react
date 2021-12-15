@@ -76,4 +76,5 @@ img.person {
 
 h3 {
   font-size: calc(1rem + 1vw);
+  line-height: 1.5em;
 }
