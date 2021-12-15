@@ -17,8 +17,8 @@ const Background = styled.div`
   position: absolute;
   width: 100vw;
   background-color: #171f47;
-  background-size: auto 85vh;
   z-index: -1;
+  margin-top: 355px;
 `;
 const Title = styled.h1`
   display: inline-block;
@@ -37,8 +37,19 @@ const Title = styled.h1`
     transfor: translate(-50%);
   }
 `;
-const Line = styled.span``;
-const Triangle = styled.span``;
+const Line = styled.span`
+  border-left: 4px solid #f4ebf2;
+  height: 15rem;
+  margin-top: 2rem;
+  border-radius: 20px 20px 0 0;
+`;
+const Triangle = styled.span`
+  width: 0;
+  height: 0;
+  border-left: 1.2rem solid transparent;
+  border-right: 1.2rem solid transparent;
+  border-top: 2rem solid #f4ebf2;
+`;
 
 const Services = () => {
   return (
