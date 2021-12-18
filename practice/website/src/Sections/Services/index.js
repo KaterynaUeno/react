@@ -31,10 +31,10 @@ const Title = styled.h1`
     height: 1px;
     width: 50%;
     position: absolute;
-    left: 25%;
+    left: 50%;
     bottom: 0;
     border: solid 2px #ebcdf9;
-    transfor: translate(-50%);
+    transform: translate(-50%);
   }
 `;
 const Line = styled.span`
@@ -50,6 +50,8 @@ const Triangle = styled.span`
   border-right: 1.2rem solid transparent;
   border-top: 2rem solid #f4ebf2;
 `;
+const Content = styled.div``;
+const TextBlock = styled.div``;
 
 const Services = () => {
   return (
@@ -59,6 +61,9 @@ const Services = () => {
         <Line />
         <Triangle />
       </Background>
+      <Content>
+        <TextBlock></TextBlock>
+      </Content>
     </ServicesSection>
   );
 };
