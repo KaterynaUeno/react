@@ -1,5 +1,5 @@
 import "./style.css";
-const TextBlock = ({ topic, title, subtext, children }) => {
+const TextBlock = ({ title, topic, subtext }) => {
   return (
     <div className="left-block">
       <div className="topic">
@@ -7,7 +7,6 @@ const TextBlock = ({ topic, title, subtext, children }) => {
       </div>
       <h1 className="title">{title}</h1>
       <h5 className="subtext">{subtext}</h5>
-      {children}
     </div>
   );
 };
