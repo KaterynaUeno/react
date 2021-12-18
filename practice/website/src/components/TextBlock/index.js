@@ -1,17 +1,13 @@
 import "./style.css";
-const TextBlock = () => {
+const TextBlock = ({ topic, title, subtext, children }) => {
   return (
     <div className="left-block">
       <div className="topic">
-        <span className="circle">Hello, we're a design company</span>
+        <span className="circle">{topic}</span>
       </div>
-      <h1 className="title">
-        Experts in Website Design & Development based in London
-      </h1>
-      <h5 className="subtext">
-        We merge imagination and technology to help brands grow in an age of
-        digital transformation
-      </h5>
+      <h1 className="title">{title}</h1>
+      <h5 className="subtext">{subtext}</h5>
+      {children}
     </div>
   );
 };

@@ -30,11 +30,12 @@
   align-items: flex-start;
   width: 50%;
   line-height: 1.5;
+  color: #f3ebf3;
 }
 
 @media screen and (max-width: 48em) {
   .left-block {
-    width: 80%;
+    width: 100%;
     text-align: center;
     align-items: center;
   }
