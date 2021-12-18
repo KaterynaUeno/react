@@ -1,6 +1,5 @@
 img.wave {
   width: auto;
-  height: 400px;
 }
 @media screen and (max-width: 48em) {
   img.wave {
@@ -10,7 +9,7 @@ img.wave {
 }
 
 .about {
-  width: 100vw;
+  width: 85vw;
   position: relative;
   display: flex;
   flex-direction: column;

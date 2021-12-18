@@ -20,22 +20,22 @@ const Blob = styled.div`
   } ;
 `;
 const PinkBlob = styled.div`
-  width: calc(10% + 10vw);
+  width: calc(13% + 15vw);
   position: absolute;
-  right: calc(3.5rem + 3.5vw);
+  right: 0;
   top: calc(5rem + 5vw);
   z-index: 6;
 `;
 const PurpleBlob = styled.div`
-  width: calc(10% + 10vw);
+  width: calc(8% + 20vw);
   position: absolute;
   right: 0;
 `;
 const WhiteBlob = styled.div`
-  width: calc(18% + 20vw);
+  width: calc(20% + 20vw);
   position: absolute;
-  right: 0;
-  top: calc(10rem + 10vw);
+  right: calc(3.5rem + 3.5vw);
+  top: calc(2rem + 2vw);
   z-index: 3;
 `;
 

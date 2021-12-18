@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import SvgBlock from "../../components/SvgBlock";
-import TextBlock from "../../components/TextBlock";
 const ServicesSection = styled.div`
   width: 100vw;
   display: flex;
@@ -20,7 +19,6 @@ const Background = styled.div`
   width: 100vw;
   background-color: #171f47;
   z-index: -1;
-  margin-top: 355px;
 `;
 const Title = styled.h1`
   display: inline-block;
@@ -52,9 +50,8 @@ const Triangle = styled.span`
   border-right: 1.2rem solid transparent;
   border-top: 2rem solid #f4ebf2;
 `;
-const Content = styled.div`
-  display: flex;
-`;
+const Content = styled.div``;
+const TextBlock = styled.div``;
 
 const Services = () => {
   return (
@@ -64,13 +61,10 @@ const Services = () => {
         <Line />
         <Triangle />
       </Background>
-      <Content></Content>
-      <TextBlock
-        topic="Design"
-        title="We transform designs into webpages"
-        subtext="Our services are highly recommended by our clients"
-      />
-      <SvgBlock svg="Design.svg" />
+      <Content>
+        <TextBlock topic="" />
+        <SvgBlock />
+      </Content>
     </ServicesSection>
   );
 };

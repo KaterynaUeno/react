@@ -32,6 +32,7 @@ const Nav = styled.nav`
     font-weight: 500;
     color: var(--navtext);
     line-height: 1.5;
+    font-size:20px;
   }
   @media only Screen and (max-width: 48em){
   display: none;
@@ -45,6 +46,7 @@ const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  font-size: 20px;
 
   &:hover {
     transform: scale(1.1);
@@ -118,7 +120,7 @@ const Header = () => {
   return (
     <Headers>
       <Logo>
-        <img src={logoq} className="logo"></img>
+        <img src={logoq} className="logo" alt=""></img>
         <h3 className="title">KatoAgency</h3>
       </Logo>
       <Nav>
@@ -137,7 +139,7 @@ const Header = () => {
         <a href="#services">Services</a>
         <a href="#about">About us</a>
         <a href="#contact">
-          <Button>Contact us</Button>
+          <Button className="nav-button">Contact us</Button>
         </a>
       </MobileMenu>
     </Headers>

@@ -17,6 +17,7 @@ img.logo {
   font-weight: 500;
   color: var(--navtext);
   line-height: 1.5;
+  font-size: 20px;
 }
 a::after {
   content: "";
@@ -29,4 +30,8 @@ a::after {
 a:not(:last-child):hover:after {
   width: 100%;
   background-color: var(--purple);
+}
+
+.nav-button {
+  font-size: 20px;
 }
