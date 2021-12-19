@@ -33,10 +33,14 @@ const Carousel = styled.div`
   width: 50vw;
   display: flex;
   flex-direction: column;
-
+  @media only Screen and (max-width: 48em) {
+    width: 90vw;
+  }
   .slick-slider .slick-arrow:before {
     color: black;
     font-size: 1.5rem;
+    @media only Screen and (max-width: 48em){
+    display:none;
   }
 
   .slick-slider .slick-dots button:before {
