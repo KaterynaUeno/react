@@ -18,8 +18,8 @@ const Home = () => {
       <HeroSection />
       <About />
       <Services />
-      <Contact />
       <Testimonials />
+      <Contact />
     </Container>
   );
 };
