@@ -1,1 +1,1 @@
-# react projects based on Udemy course
+# react projects based on Udemy course and other inspirations
