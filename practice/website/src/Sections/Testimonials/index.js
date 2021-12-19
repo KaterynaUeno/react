@@ -33,6 +33,26 @@ const Carousel = styled.div`
   width: 50vw;
   display: flex;
   flex-direction: column;
+
+  .slick-slider .slick-arrow:before {
+    color: black;
+    font-size: 1.5rem;
+  }
+
+  .slick-slider .slick-dots button:before {
+    color: pink;
+    font-size: 1rem;
+  }
+
+  .slick-slide .slick-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
 `;
 const Testimonials = () => {
   const settings = {
@@ -56,17 +76,12 @@ const Testimonials = () => {
           <Card
             text="We are very impressed with the level of service provided by Ignite Visibility"
             name="Director of Admission, Army & Navy Academy"
-            image="avatar-2"
+            image="avatar-4"
           />
           <Card
             text="I find it very impressive with how much work they put into each campaign."
             name="Administrator, O'Keefe Ceramics"
             image="avatar-3"
-          />
-          <Card
-            text="They’ve been great at managing our expectations and are very accommodating with our evolving requests and priorities."
-            name="Marketing Coordinator, Eden Health"
-            image="avatar-4"
           />
         </Slider>
       </Carousel>
