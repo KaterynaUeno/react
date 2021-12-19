@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import "./style.css";
 const RightBlock = styled.div`
@@ -7,8 +8,8 @@ const RightBlock = styled.div`
   width: 50%;
   position: relative;
 `;
-const SvgBlock = () => {
-  const SvgIcon = require("../../assets/Design.svg").default;
+const SvgBlock = ({ svg }) => {
+  const SvgIcon = require(`../../assets/${svg}`).default;
   return (
     <RightBlock>
       <img src={SvgIcon} alt="" className="design" />

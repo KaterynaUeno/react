@@ -85,11 +85,15 @@ const Services = () => {
           title="We develop high quality Web and App"
           subtext="We find a solution for any challenge"
         />
-        <SvgBlock svg="Design.svg" />
+        <SvgBlock svg="Develop.svg" />
       </Content>
       <Content>
-        <TextBlock topic="" />
-        <SvgBlock svg="Design.svg" />
+        <TextBlock
+          topic="Support"
+          title="We provide support for your digital presence"
+          subtext="Once your system is online, we will stay on hand to help you use it and provide technical support to your business"
+        />
+        <SvgBlock svg="Support.svg" />
       </Content>
     </ServicesSection>
   );
