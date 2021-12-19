@@ -7,6 +7,10 @@ const RightBlock = styled.div`
   align-items: center;
   width: 50%;
   position: relative;
+
+  @media only Screen and (max-width: 48em) {
+    display: none;
+  }
 `;
 const SvgBlock = ({ svg }) => {
   const SvgIcon = require(`../../assets/${svg}`).default;

@@ -64,15 +64,28 @@ const Content = styled.div`
   margin: 1rem 1rem;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+
+  @media only Screen and (max-width: 48em) {
+    display: block;
+    &:last-child {
+      margin-bottom: 12rem;
+    }
+  }
 `;
 
 const Obj = styled.div`
+  position: absolute;
   top: 80%;
   right: 35%;
   width: 20cw;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only Screen and (max-width: 48em) {
+    opacity: 0.1;
+  }
 `;
 
 const Services = () => {
