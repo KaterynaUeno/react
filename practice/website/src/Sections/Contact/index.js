@@ -52,6 +52,29 @@ const Icon = styled.div`
     height: 3rem;
   }
 `;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  input {
+    padding: 0.5rem calc(0.5rem + 1vw);
+    margin-bottom: 1rem;
+    background-color: white;
+    border: 0.2px solid black;
+    border-radius: 4px;
+    color: black;
+    &:active,
+    &:focus {
+      background-color: #3f4666;
+      color: white;
+    }
+    &::placeholder {
+      color: pink;
+    }
+  }
+`;
+
+const Row = styled.div``;
 const Contact = () => {
   return (
     <ContactSection>
@@ -70,6 +93,16 @@ const Contact = () => {
           <img src={Linkedin} alt="Linkedin" />
         </a>
       </Icon>
+      <Form>
+        <Row>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" />
+        </Row>
+        <textarea name="message" cols="30" rows="2"></textarea>
+        <div>
+          <button>Submit</button>
+        </div>
+      </Form>
     </ContactSection>
   );
 };
