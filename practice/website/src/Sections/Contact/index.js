@@ -71,6 +71,9 @@ const Form = styled.form`
     &::placeholder {
       color: pink;
     }
+    &[name="name"] {
+      margin-right: 1rem;
+    }
   }
 `;
 
