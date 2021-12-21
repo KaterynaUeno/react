@@ -57,7 +57,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   input {
-    padding: 0.5rem calc(0.5rem + 1vw);
+    padding: 0.5rem calc(0.5rem + 0.5vw);
     margin-bottom: 1rem;
     background-color: white;
     border: 0.2px solid black;
@@ -76,7 +76,7 @@ const Form = styled.form`
     }
   }
   textarea {
-    padding: 0.5rem calc(0.5rem + 1vw);
+    padding: 0.5rem calc(0.5rem + 0.5vw);
     margin-bottom: 1rem;
     background-color: white;
     border: 0.2px solid black;
@@ -110,7 +110,17 @@ const Form = styled.form`
   }
 `;
 
-const Row = styled.div``;
+const Row = styled.div`
+  @media only Screen and (max-width: 40em) {
+    display: flex;
+    flex-direction: column;
+    input {
+      &[name="name"] {
+        margin-right: 0;
+      }
+    }
+  }
+`;
 const Contact = () => {
   return (
     <ContactSection>
