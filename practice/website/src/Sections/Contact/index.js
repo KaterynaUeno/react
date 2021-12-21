@@ -75,6 +75,39 @@ const Form = styled.form`
       margin-right: 1rem;
     }
   }
+  textarea {
+    padding: 0.5rem calc(0.5rem + 1vw);
+    margin-bottom: 1rem;
+    background-color: white;
+    border: 0.2px solid black;
+    border-radius: 4px;
+    color: black;
+    &:active,
+    &:focus {
+      background-color: #3f4666;
+      color: white;
+    }
+    &::placeholder {
+      color: pink;
+    }
+  }
+
+  button {
+    padding: 0.8rem 2rem;
+    background-color: pink;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const Row = styled.div``;
@@ -101,8 +134,13 @@ const Contact = () => {
           <input type="text" name="name" placeholder="Name" />
           <input type="email" name="email" placeholder="Email" />
         </Row>
-        <textarea name="message" cols="30" rows="2"></textarea>
-        <div>
+        <textarea
+          name="message"
+          cols="30"
+          rows="2"
+          placeholder="Your message"
+        ></textarea>
+        <div style={{ margin: "0 auto" }}>
           <button>Submit</button>
         </div>
       </Form>
