@@ -90,7 +90,7 @@ const Obj = styled.div`
 
 const Services = () => {
   return (
-    <ServicesSection>
+    <ServicesSection id="services">
       <Background>
         <Title>Our Services:</Title>
         <Line />

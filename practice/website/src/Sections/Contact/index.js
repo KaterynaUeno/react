@@ -123,7 +123,7 @@ const Row = styled.div`
 `;
 const Contact = () => {
   return (
-    <ContactSection>
+    <ContactSection id="contact">
       <Title>Get in touch</Title>
       <Icon>
         <a href="https://en-gb.facebook.com/">
