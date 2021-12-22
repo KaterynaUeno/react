@@ -1,13 +1,24 @@
 import styled from "styled-components";
-import Github from "../../assets/GitHub-Mark-32px.png";
+import Github from "../../assets/GitHub-Mark-Light-32px.png";
 import Linkedin from "../../assets/linkedin-brands.svg";
 
 const Bottom = styled.div`
+  background-color: #3f4666;
   padding: 1.2rem calc(2.5rem + 2.5vw);
   font-size: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  @media only Screen and(max-width: 48em) {
+    flex-direction: column;
+    align-items: center;
+    div {
+      &:first-child {
+        margin-bottom: 1rem;
+      }
+    }
+  }
 `;
 const LeftText = styled.div``;
 const RightText = styled.div`
