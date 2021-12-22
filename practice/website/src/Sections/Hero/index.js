@@ -58,7 +58,7 @@ const MobileImg = styled.img`
 
 const HeroSection = () => {
   return (
-    <div className="hero-section">
+    <div className="hero-section" id="home">
       <Blob>
         <PinkBlob>
           <img src={Pink} alt="" width="400" height="400"></img>
