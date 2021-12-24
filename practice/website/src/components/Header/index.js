@@ -13,6 +13,13 @@ const Headers = styled.header`
   color: var(--navtext);
   position: relative;
   z-index: 500;
+
+  @media only Screen and (max-width: 64em) {
+    padding: 0.5rem 3rem;
+  }
+  @media only Screen and (max-width: 40em) {
+    padding: 0.5rem 1.5rem;
+  }
 `;
 
 const Logo = styled.a`
@@ -145,7 +152,7 @@ const Header = () => {
           scrub: true,
         },
       });
-    } else
+    } else {
       gsap.to(element, {
         position: "fixed",
         top: "1rem",
@@ -164,6 +171,7 @@ const Header = () => {
           scrub: true,
         },
       });
+    }
   }, []);
   return (
     <Headers ref={ref}>
