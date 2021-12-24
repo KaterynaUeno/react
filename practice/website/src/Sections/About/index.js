@@ -1,7 +1,6 @@
 import "./style.css";
 import wave from "../../assets/wave.svg";
 import spaceman from "../../assets/spaceman-removebg-preview.png";
-import person from "../../assets/person-removebg-preview.png";
 import styled, { keyframes } from "styled-components";
 
 const upAndDown = keyframes`
