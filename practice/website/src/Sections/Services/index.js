@@ -4,6 +4,7 @@ import TextBlock from "../../components/TextBlock";
 import Tube from "../../assets/3dtube.png";
 import Cone from "../../assets/3dtriangle.png";
 import Capsule from "../../assets/3dcapsule.png";
+import gsap from "gsap/all";
 
 const ServicesSection = styled.div`
   width: 100vw;
@@ -89,6 +90,8 @@ const Obj = styled.div`
 `;
 
 const Services = () => {
+  const ref = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
   return (
     <ServicesSection id="services">
       <Background>
