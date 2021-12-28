@@ -1,10 +1,12 @@
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import SvgBlock from "../../components/SvgBlock";
 import TextBlock from "../../components/TextBlock";
 import Tube from "../../assets/3dtube.png";
 import Cone from "../../assets/3dtriangle.png";
 import Capsule from "../../assets/3dcapsule.png";
-import gsap from "gsap/all";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ServicesSection = styled.div`
   width: 100vw;
@@ -91,16 +93,54 @@ const Obj = styled.div`
 
 const Services = () => {
   const ref = useRef(null);
+  const revealRefs = useRef([]);
+  revealRefs.current = [];
   gsap.registerPlugin(ScrollTrigger);
+
+  const addToRefs = (el) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+  };
+  useEffect(() => {
+    const element = ref.current;
+    const line = document.getElementById("line");
+    const triangle = document.getElementById("triangle");
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.getElementById("services"),
+        start: "top top+=180",
+        end: "bottom bottom",
+        pin: element,
+        pinReparent: true,
+        markers: true,
+      },
+    });
+    tl.fromTo(
+      document.getElementById("line"),
+      {
+        height: "15rem",
+      },
+      {
+        height: "3rem",
+        duration: 2,
+        scrollTrigger: {
+          trigger: line,
+          start: "top top+=200",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
   return (
     <ServicesSection id="services">
-      <Background>
+      <Background ref={ref}>
         <Title>Our Services:</Title>
-        <Line />
-        <Triangle />
+        <Line id="line" />
+        <Triangle id="triangle" />
       </Background>
 
-      <Content>
+      <Content ref={addToRefs}>
         <TextBlock
           topic="Design"
           title="We build award-winning designs"
@@ -111,7 +151,7 @@ const Services = () => {
         </Obj>
         <SvgBlock svg="Design.svg" />
       </Content>
-      <Content>
+      <Content ref={addToRefs}>
         <TextBlock
           topic="Develop"
           title="We develop high quality Web and App"
@@ -122,7 +162,7 @@ const Services = () => {
         </Obj>
         <SvgBlock svg="Develop.svg" />
       </Content>
-      <Content>
+      <Content ref={addToRefs}>
         <TextBlock
           topic="Support"
           title="We provide support for your digital presence"

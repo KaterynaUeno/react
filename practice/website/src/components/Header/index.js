@@ -4,6 +4,7 @@ import "./styles.css";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const Headers = styled.header`
   display: flex;
   justify-content: space-between;
