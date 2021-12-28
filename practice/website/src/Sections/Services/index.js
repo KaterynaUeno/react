@@ -147,20 +147,49 @@ const Services = () => {
           scrub: true,
           snap: true,
         },
-      }).to(el.childNodes[1], {
-        transform: "scale(0)",
-        duration: 2,
-        ease: "power2.inOut",
+      })
+        .to(el.childNodes[1], {
+          transform: "scale(0)",
+          duration: 2,
+          ease: "power2.inOut",
 
-        scrollTrigger: {
-          trigger: el.childNodes[1],
-          id: `section -${index + 1}`,
-          start: "top center",
-          end: "bottom center",
-          scrub: true,
-          snap: true,
-        },
-      });
+          scrollTrigger: {
+            trigger: el.childNodes[1],
+            id: `section -${index + 1}`,
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+            snap: true,
+          },
+        })
+        .from(el.childNodes[2], {
+          y: 400,
+          duration: 2,
+          ease: "power2",
+
+          scrollTrigger: {
+            trigger: el,
+            id: `section -${index + 1}`,
+            start: "top center+=100",
+            end: "bottom center -=200",
+            scrub: true,
+            snap: true,
+          },
+        })
+        .to(el, {
+          opacity: 0,
+          duration: 2,
+          ease: "power2",
+
+          scrollTrigger: {
+            trigger: el,
+            id: `section -${index + 1}`,
+            start: "top top +=200",
+            end: "center top +=300",
+            scrub: true,
+            snap: true,
+          },
+        });
     });
   }, []);
   return (
