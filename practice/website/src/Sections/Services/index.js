@@ -64,7 +64,7 @@ const Triangle = styled.span`
 `;
 const Content = styled.div`
   display: flex;
-  margin: 1rem 1rem;
+  margin: 10rem 10rem;
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -131,6 +131,37 @@ const Services = () => {
         },
       }
     );
+
+    revealRefs.current.forEach((el, index) => {
+      tl.from(el.childNodes[0], {
+        x: -300,
+        opacity: 0,
+        duration: 2,
+        ease: "power2",
+
+        scrollTrigger: {
+          trigger: el,
+          id: `section -${index + 1}`,
+          start: "top center+=100",
+          end: "bottom bottom-=200",
+          scrub: true,
+          snap: true,
+        },
+      }).to(el.childNodes[1], {
+        transform: "scale(0)",
+        duration: 2,
+        ease: "power2.inOut",
+
+        scrollTrigger: {
+          trigger: el.childNodes[1],
+          id: `section -${index + 1}`,
+          start: "top center",
+          end: "bottom center",
+          scrub: true,
+          snap: true,
+        },
+      });
+    });
   }, []);
   return (
     <ServicesSection id="services">
