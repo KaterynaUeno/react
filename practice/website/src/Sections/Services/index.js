@@ -25,7 +25,7 @@ const Background = styled.div`
   align-items: center;
   position: absolute;
   width: 100vw;
-  height: 100%;
+  height: 85vh;
   background-color: #171f47;
   top: 0;
   left: 0;
@@ -47,6 +47,9 @@ const Title = styled.h1`
     bottom: 0;
     border: solid 2px #ebcdf9;
     transform: translate(-50%);
+    @media only Screen and (max-width: 48em) {
+      font-size: calc(1rem + 1.5vw);
+    }
   }
 `;
 const Line = styled.span`
@@ -72,7 +75,13 @@ const Content = styled.div`
   @media only Screen and (max-width: 48em) {
     display: block;
     &:last-child {
-      margin-bottom: 12rem;
+      margin-bottom: 10rem;
+    }
+  }
+  @media only Screen and (max-width: 40em) {
+    margin: 10rem calc(2rem +3vw);
+    &:last-child {
+      margin-bottom: 1rem;
     }
   }
 `;
@@ -105,15 +114,14 @@ const Services = () => {
   useEffect(() => {
     const element = ref.current;
     const line = document.getElementById("line");
-    const triangle = document.getElementById("triangle");
+    const mq = window.matchMedia("(max-width: 40em)");
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.getElementById("services"),
-        start: "top top+=180",
+        start: "top top +=180",
         end: "bottom bottom",
         pin: element,
         pinReparent: true,
-        markers: true,
       },
     });
     tl.fromTo(
@@ -133,50 +141,9 @@ const Services = () => {
     );
 
     revealRefs.current.forEach((el, index) => {
-      tl.from(el.childNodes[0], {
-        x: -300,
-        opacity: 0,
-        duration: 2,
-        ease: "power2",
-
-        scrollTrigger: {
-          trigger: el,
-          id: `section -${index + 1}`,
-          start: "top center+=100",
-          end: "bottom bottom-=200",
-          scrub: true,
-          snap: true,
-        },
-      })
-        .to(el.childNodes[1], {
-          transform: "scale(0)",
-          duration: 2,
-          ease: "power2.inOut",
-
-          scrollTrigger: {
-            trigger: el.childNodes[1],
-            id: `section -${index + 1}`,
-            start: "top center",
-            end: "bottom center",
-            scrub: true,
-            snap: true,
-          },
-        })
-        .from(el.childNodes[2], {
-          y: 400,
-          duration: 2,
-          ease: "power2",
-
-          scrollTrigger: {
-            trigger: el,
-            id: `section -${index + 1}`,
-            start: "top center+=100",
-            end: "bottom center -=200",
-            scrub: true,
-            snap: true,
-          },
-        })
-        .to(el, {
+      if (mq.matches) {
+        tl.from(el.childNodes[0], {
+          x: -300,
           opacity: 0,
           duration: 2,
           ease: "power2",
@@ -184,12 +151,128 @@ const Services = () => {
           scrollTrigger: {
             trigger: el,
             id: `section -${index + 1}`,
-            start: "top top +=200",
-            end: "center top +=300",
+            start: "top center +=200",
+            end: "bottom bottom-=100",
             scrub: true,
             snap: true,
           },
-        });
+        })
+          .to(el.childNodes[1], {
+            transform: "scale(0)",
+            ease: "power2.inOut",
+
+            scrollTrigger: {
+              trigger: el.childNodes[1],
+              id: `section -${index + 1}`,
+              start: "top center",
+              end: "bottom center",
+              scrub: true,
+              snap: true,
+            },
+          })
+          .from(el.childNodes[2], {
+            y: 400,
+            duration: 2,
+            ease: "power2",
+
+            scrollTrigger: {
+              trigger: el,
+              id: `section -${index + 1}`,
+              start: "top center+=100",
+              end: "bottom center -=200",
+              scrub: true,
+              snap: true,
+            },
+          })
+          .to(el, {
+            opacity: 0,
+            ease: "power2",
+
+            scrollTrigger: {
+              trigger: el,
+              id: `section -${index + 1}`,
+              start: "top top +=200",
+              end: "center top +=300",
+              scrub: true,
+              snap: true,
+            },
+          });
+      } else {
+        tl.from(
+          el.childNodes[0],
+
+          {
+            x: -300,
+            opacity: 0,
+            duration: 2,
+
+            ease: "power2",
+            scrollTrigger: {
+              id: `section-${index + 1}`,
+              trigger: el,
+              start: "top center+=100",
+              end: "bottom bottom-=200",
+              scrub: true,
+              snap: true,
+              //
+              // toggleActions: "play none none reverse",
+            },
+          }
+        )
+          .to(el.childNodes[1], {
+            transform: "scale(0)",
+
+            ease: "power2.inOut",
+
+            scrollTrigger: {
+              id: `section-${index + 1}`,
+              trigger: el.childNodes[1],
+              start: "top center",
+              end: "bottom center",
+              scrub: true,
+              snap: true,
+
+              // toggleActions: "play none none reverse",
+            },
+          })
+          .from(
+            el.childNodes[2],
+
+            {
+              y: 400,
+
+              duration: 2,
+
+              ease: "power2",
+              scrollTrigger: {
+                id: `section-${index + 1}`,
+                trigger: el,
+                start: "top center+=100",
+                end: "bottom bottom-=200",
+                scrub: true,
+                snap: true,
+                //
+                // toggleActions: "play none none reverse",
+              },
+            }
+          )
+          .to(
+            el,
+
+            {
+              opacity: 0,
+
+              ease: "power2",
+              scrollTrigger: {
+                id: `section-${index + 1}`,
+                trigger: el,
+                start: "top top+=200",
+                end: "center top+=300",
+                scrub: true,
+              },
+            }
+          );
+      }
     });
   }, []);
   return (

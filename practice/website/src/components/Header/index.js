@@ -124,11 +124,23 @@ const MobileMenu = styled.div`
 
 const Header = () => {
   const [click, setClick] = useState(false);
-  const handleClcik = () => {
-    setClick(!click);
-  };
+
   const ref = useRef(null);
   gsap.registerPlugin(ScrollTrigger);
+
+  const ScrollUp = (id, e) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  };
+  const handleClick = (id, e) => {
+    setClick(!click);
+    ScrollUp(id, e);
+  };
 
   useEffect(() => {
     const element = ref.current;
@@ -181,23 +193,34 @@ const Header = () => {
         <h3 className="title">KatoAgency</h3>
       </Logo>
       <Nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About us</a>
-        <a href="#contact">
+        <a href="#home" onClick={(e) => handleClick("home", e)}>
+          Home
+        </a>
+        <a href="#services" onClick={(e) => handleClick("services", e)}>
+          Services
+        </a>
+        <a href="#about" onClick={(e) => handleClick("about", e)}>
+          About us
+        </a>
+        <a href="#contact" onClick={(e) => handleClick("contact", e)}>
           <Button>Contact us</Button>
         </a>
       </Nav>
-      <HamburgerBtn onClick={() => handleClcik()} clicked={click}>
+      <HamburgerBtn onClick={() => setClick(!click)} clicked={click}>
         <span></span>
       </HamburgerBtn>
       <MobileMenu clicked={click}>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About us</a>
-        <a href="#contact">
-          <Button className="nav-button">Contact us</Button>
+            <a href="#home" onClick={(e) => handleClick("home", e)}>
+          Home
         </a>
+        <a href="#services" onClick={(e) => handleClick("services", e)}>
+          Services
+        </a>
+        <a href="#about" onClick={(e) => handleClick("about", e)}>
+          About us
+        </a>
+        <a href="#contact" onClick={(e) => handleClick("contact", e)}>
+          <Button>Contact us</Button>
       </MobileMenu>
     </Headers>
   );

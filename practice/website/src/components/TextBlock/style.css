@@ -57,10 +57,20 @@ h1.title {
   padding: 0.5rem 0;
   color: white;
 }
+@media screen and (max-width: 48em) {
+  h1.title {
+    font-size: calc(1rem + 1.5vw);
+  }
+}
 
 h5.subtext {
   font-size: calc(0.5rem + 0.5 vw);
   color: #c3c2c7;
+}
+@media screen and (max-width: 48em) {
+  h5.subtext {
+    font-size: calc(0.5rem + 1vw);
+  }
 }
 
 .btn {
@@ -97,4 +107,9 @@ h5.subtext {
   font-size: calc(0.5rem + 0.5vw);
   font-weight: 700;
   padding: 0.5rem 1rem;
+}
+@media screen and (max-width: 48em) {
+  .topic {
+    font-size: calc(0.4rem + 0.8vw);
+  }
 }
