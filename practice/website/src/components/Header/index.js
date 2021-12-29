@@ -210,7 +210,7 @@ const Header = () => {
         <span></span>
       </HamburgerBtn>
       <MobileMenu clicked={click}>
-            <a href="#home" onClick={(e) => handleClick("home", e)}>
+        <a href="#home" onClick={(e) => handleClick("home", e)}>
           Home
         </a>
         <a href="#services" onClick={(e) => handleClick("services", e)}>
@@ -219,8 +219,8 @@ const Header = () => {
         <a href="#about" onClick={(e) => handleClick("about", e)}>
           About us
         </a>
-        <a href="#contact" onClick={(e) => handleClick("contact", e)}>
-          <Button>Contact us</Button>
+        <a href="#contact" onClick={(e) => handleClick("contact", e)}></a>
+        <Button>Contact us</Button>
       </MobileMenu>
     </Headers>
   );

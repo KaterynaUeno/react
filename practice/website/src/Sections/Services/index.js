@@ -151,8 +151,8 @@ const Services = () => {
           scrollTrigger: {
             trigger: el,
             id: `section -${index + 1}`,
-            start: "top center +=200",
-            end: "bottom bottom-=100",
+            start: "top center +=100",
+            end: "bottom bottom-=200",
             scrub: true,
             snap: true,
           },
