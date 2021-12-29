@@ -47,9 +47,6 @@ const Title = styled.h1`
     bottom: 0;
     border: solid 2px #ebcdf9;
     transform: translate(-50%);
-    @media only Screen and (max-width: 48em) {
-      font-size: calc(1rem + 1.5vw);
-    }
   }
 `;
 const Line = styled.span`
@@ -134,7 +131,8 @@ const Services = () => {
         duration: 2,
         scrollTrigger: {
           trigger: line,
-          start: "top top+=200",
+          start: "top top += 200",
+          end: "bottom top += 200",
           scrub: true,
         },
       }
@@ -151,14 +149,15 @@ const Services = () => {
           scrollTrigger: {
             trigger: el,
             id: `section -${index + 1}`,
-            start: "top center +=100",
-            end: "bottom bottom-=200",
+            start: "top center +=200",
+            end: "bottom bottom -=100",
             scrub: true,
             snap: true,
           },
         })
           .to(el.childNodes[1], {
             transform: "scale(0)",
+            duration: 2,
             ease: "power2.inOut",
 
             scrollTrigger: {
@@ -191,7 +190,7 @@ const Services = () => {
             scrollTrigger: {
               trigger: el,
               id: `section -${index + 1}`,
-              start: "top top +=200",
+              start: "top top +=300",
               end: "center top +=300",
               scrub: true,
               snap: true,
@@ -305,7 +304,7 @@ const Services = () => {
         </Obj>
         <SvgBlock svg="Develop.svg" />
       </Content>
-      <Content ref={addToRefs}>
+      <Content>
         <TextBlock
           topic="Support"
           title="We provide support for your digital presence"

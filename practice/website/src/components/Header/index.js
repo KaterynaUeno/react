@@ -61,7 +61,7 @@ const Button = styled.button`
   &:hover {
     transform: scale(1.1);
   }
-  &:focus {
+  &:active {
     transform: scale(0.9);
   }
 `;
@@ -97,7 +97,7 @@ const HamburgerBtn = styled.button`
 
 `;
 const MobileMenu = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -119,6 +119,10 @@ const MobileMenu = styled.div`
     font-size: 1.5rem;
     margin: 1.5rem;
     cursor: pointer;
+  }
+
+  @media only Screen and (max-width: 48em) {
+    display: flex;
   }
 `;
 
@@ -219,8 +223,9 @@ const Header = () => {
         <a href="#about" onClick={(e) => handleClick("about", e)}>
           About us
         </a>
-        <a href="#contact" onClick={(e) => handleClick("contact", e)}></a>
-        <Button>Contact us</Button>
+        <a href="#contact" onClick={(e) => handleClick("contact", e)}>
+          <Button>Contact us</Button>
+        </a>
       </MobileMenu>
     </Headers>
   );

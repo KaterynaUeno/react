@@ -51,6 +51,12 @@
   border-radius: 20px;
 }
 
+@media screen and (max-width: 48em) {
+  .topic {
+    font-size: calc(0.4rem + 0.8vw);
+  }
+}
+
 h1.title {
   font-size: calc(2rem + 1vw);
   line-height: 1.2;
