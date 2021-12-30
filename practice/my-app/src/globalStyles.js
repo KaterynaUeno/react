@@ -18,3 +18,5 @@ body{
   font-family: "Source Sans Pro", sans-serif;
 }
 `;
+
+export default GlobalStyle;
