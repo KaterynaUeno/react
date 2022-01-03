@@ -3,6 +3,7 @@ import "./main.css";
 import styled from "styled-components";
 import PowerButton from "../subComponents/PowerButton";
 import Logo from "../subComponents/LogoComponent";
+import SocialIcons from "../subComponents/SocialIcons";
 const MainContainer = styled.div`
 background: &{props => props.theme.body};
 width: 100vw;
@@ -24,6 +25,7 @@ const Main = () => {
       <Container>
         <Logo />
         <PowerButton />
+        <SocialIcons />
       </Container>
     </MainContainer>
   );
