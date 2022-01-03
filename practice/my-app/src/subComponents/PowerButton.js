@@ -25,6 +25,10 @@ const Power = styled.button`
     background-color: rgba(152, 148, 223, 0.4);
     box-shadow: 0 0 8px 6px rgba(152, 148, 223, 0.2);
   }
+
+  & > *:first-child {
+    color: inherit;
+  }
 `;
 const PowerButton = () => {
   return (
