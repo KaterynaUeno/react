@@ -25,17 +25,20 @@ const SocialIcons = () => {
   return (
     <Icons>
       <div>
-        <NavLink to="/">
+        <NavLink
+          target="_blank"
+          to={{ pathname: "https://github.com/KaterynaUeno" }}
+        >
           <Github width={25} height={25} fill="currentColor" />
         </NavLink>
       </div>
       <div>
-        <NavLink to="/">
+        <NavLink target="_blank" to="/">
           <Twitter width={25} height={25} fill="currentColor" />
         </NavLink>
       </div>
       <div>
-        <NavLink to="/">
+        <NavLink target="_blank" to="/">
           <Facebook width={25} height={25} fill="currentColor" />
         </NavLink>
       </div>
