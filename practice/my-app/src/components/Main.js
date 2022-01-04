@@ -51,7 +51,30 @@ const Work = styled(NavLink)`
   z-index: 1;
   cursor: pointer;
 `;
+const Bottom = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+const About = styled(NavLink)`
+  color: ${(props) => props.theme.text};
 
+  text-decoration: none;
+  z-index: 1;
+  cursor: pointer;
+`;
+
+const MySkills = styled(NavLink)`
+  color: ${(props) => props.theme.text};
+
+  text-decoration: none;
+  z-index: 1;
+  cursor: pointer;
+`;
 const Main = () => {
   return (
     <MainContainer>
@@ -71,6 +94,14 @@ const Main = () => {
         <Work to="/work">
           <h3>Work</h3>
         </Work>
+        <Bottom>
+          <About to="/about">
+            <h3>About me</h3>
+          </About>
+          <MySkills to="/skills">
+            <h3>My skills</h3>
+          </MySkills>
+        </Bottom>
       </Container>
     </MainContainer>
   );
