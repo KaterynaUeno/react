@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./main.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import PowerButton from "../subComponents/PowerButton";
 import Logo from "../subComponents/LogoComponent";
 import SocialIcons from "../subComponents/SocialIcons";
 import { NavLink } from "react-router-dom";
+import { YinYang } from "../AllSvgs";
 
 const MainContainer = styled.div`
 background: &{props => props.theme.body};
@@ -75,13 +76,55 @@ const MySkills = styled(NavLink)`
   z-index: 1;
   cursor: pointer;
 `;
+
+const rotate = keyframes`
+from {
+  transform: rotate(0);
+}
+to {
+  transform: rotate(360deg);
+}`;
+
+const Center = styled.button`
+  position: absolute;
+  top: ${(props) => (props.click ? "85%" : "50%")};
+  left: ${(props) => (props.click ? "92%" : "50%")};
+  transform: translate(-50%, -50%);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+  & > :first-child {
+    animation: ${rotate} infinite 1.5s linear;
+  }
+  & > :last-child {
+    padding-top: 1rem;
+  }
+`;
 const Main = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
   return (
     <MainContainer>
       <Container>
         <Logo />
         <PowerButton />
         <SocialIcons />
+        <Center click={click}>
+          <YinYang
+            onClick={() => handleClick()}
+            width={170}
+            height={170}
+            fill="currentColor"
+          />
+          {/* <span>Click here</span> */}
+        </Center>
         <Contact
           target="_blank"
           to={{ pathname: "mailto:katerynaueno@gmail.com" }}
