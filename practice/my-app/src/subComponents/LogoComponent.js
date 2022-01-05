@@ -13,7 +13,7 @@ const Logo = styled.h1`
   z-index: 3;
 `;
 const LogoComponent = (props) => {
-  return <Logo color={(props) => props.theme}>Kateryna Ueno</Logo>;
+  return <Logo color={props.theme}>Kateryna Ueno</Logo>;
 };
 
 export default LogoComponent;

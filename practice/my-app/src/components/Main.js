@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./main.css";
 import styled, { keyframes } from "styled-components";
 import PowerButton from "../subComponents/PowerButton";
 import Logo from "../subComponents/LogoComponent";
@@ -17,7 +16,6 @@ position: relative;
 h2,h3,h4,h5.h6{
   font-family: "Karla", sans-serif;
   font-weight: 500;
-  color: black;
 }`;
 
 const Container = styled.div`
@@ -43,7 +41,7 @@ const BLOG = styled(NavLink)`
   cursor: pointer;
 `;
 const Work = styled(NavLink)`
-  color: ${(props) => (props.click ? props.theme.body : props.text)};
+  color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
   position: absolute;
   left: calc(1rem + 2vw);
   top: 50%;
@@ -62,7 +60,6 @@ const Bottom = styled.div`
 `;
 const About = styled(NavLink)`
   color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
-
   text-decoration: none;
   z-index: 1;
   cursor: pointer;

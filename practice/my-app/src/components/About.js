@@ -1,6 +1,7 @@
 import React from "react";
+import { darkTheme } from "../components/Themes";
 
-const About = () => {
+const About = (props) => {
   return <div>About</div>;
 };
 
