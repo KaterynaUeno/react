@@ -106,16 +106,30 @@ const Center = styled.button`
     padding-top: 1rem;
   }
 `;
+
+const DarkDiv = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+  width: ${(props) => (props.click ? "50%" : "0%")};
+  height: ${(props) => (props.click ? "100%" : "0%")};
+  z-index: 1;
+  background-color: #000;
+  transition: height 0.5s ease, width 1s ease 0.5s;
+`;
 const Main = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
   return (
     <MainContainer>
+      <DarkDiv click={click} />
       <Container>
         <Logo />
         <PowerButton />
         <SocialIcons />
+        <DarkDiv click={click} />
         <Center click={click}>
           <YinYang
             onClick={() => handleClick()}
