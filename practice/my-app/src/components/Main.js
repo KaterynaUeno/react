@@ -17,12 +17,12 @@ position: relative;
 h2,h3,h4,h5.h6{
   font-family: "Karla", sans-serif;
   font-weight: 500;
+  color: black;
 }`;
 
 const Container = styled.div`
   padding: 2rem;
 `;
-
 const Contact = styled(NavLink)`
   color: ${(props) => props.theme.text};
   position: absolute;
@@ -42,9 +42,8 @@ const BLOG = styled(NavLink)`
   z-index: 1;
   cursor: pointer;
 `;
-
 const Work = styled(NavLink)`
-  color: ${(props) => props.theme.text};
+  color: ${(props) => (props.click ? props.theme.body : props.text)};
   position: absolute;
   left: calc(1rem + 2vw);
   top: 50%;
@@ -62,13 +61,12 @@ const Bottom = styled.div`
   justify-content: space-evenly;
 `;
 const About = styled(NavLink)`
-  color: ${(props) => props.theme.text};
+  color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
 
   text-decoration: none;
   z-index: 1;
   cursor: pointer;
 `;
-
 const MySkills = styled(NavLink)`
   color: ${(props) => props.theme.text};
 
@@ -76,7 +74,6 @@ const MySkills = styled(NavLink)`
   z-index: 1;
   cursor: pointer;
 `;
-
 const rotate = keyframes`
 from {
   transform: rotate(0);
@@ -84,7 +81,6 @@ from {
 to {
   transform: rotate(360deg);
 }`;
-
 const Center = styled.button`
   position: absolute;
   top: ${(props) => (props.click ? "85%" : "50%")};
@@ -106,7 +102,6 @@ const Center = styled.button`
     padding-top: 1rem;
   }
 `;
-
 const DarkDiv = styled.div`
   position: absolute;
   top: 0;
@@ -126,9 +121,9 @@ const Main = () => {
     <MainContainer>
       <DarkDiv click={click} />
       <Container>
-        <Logo />
+        <Logo theme={click ? "dark" : "light"} />
         <PowerButton />
-        <SocialIcons />
+        <SocialIcons theme={click ? "dark" : "light"} />
         <DarkDiv click={click} />
         <Center click={click}>
           <YinYang
@@ -148,11 +143,11 @@ const Main = () => {
         <BLOG to="/blog">
           <h3>Blog</h3>
         </BLOG>
-        <Work to="/work">
+        <Work to="/work" click={click}>
           <h3>Work</h3>
         </Work>
         <Bottom>
-          <About to="/about">
+          <About to="/about" click={click}>
             <h3>About me</h3>
           </About>
           <MySkills to="/skills">
