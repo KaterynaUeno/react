@@ -7,13 +7,10 @@ const Box = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 60vw;
+  width: 70vw;
   height: 30vh;
   display: flex;
-  border-left: 2px solid ${(props) => props.theme.body};
-  border-right: 2px solid ${(props) => props.theme.text};
-  background-size: 100%;
-  background-repeat: no-repeat;
+
   background: linear-gradient(
         to right,
         ${(props) => props.theme.body} 50%,
@@ -26,14 +23,30 @@ const Box = styled.div`
         ${(props) => props.theme.text} 50%
       )
       top;
+  background-size: 100%;
 `;
 
-const SubBox = styled.div``;
+const SubBox = styled.div`
+  width: 40%;
+  position: relative;
+  display: flex;
+`;
+const Text = styled.div`
+  font-size: calc(1em + 1.5vw);
+  color: ${(props) => props.theme.text};
+  padding: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`;
 const Intro = () => {
   return (
     <Box>
       <SubBox>
-        <h1>Hello! My name is Kateryna Ueno and I am a Front-end developer</h1>
+        <Text>
+          <h4>Hi! My name is Kateryna Ueno and I am a Front-end developer</h4>
+        </Text>
       </SubBox>
     </Box>
   );

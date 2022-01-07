@@ -16,6 +16,7 @@ body{
   padding: 0;
   overflow-x: hidden;
   font-family: "Source Sans Pro", sans-serif;
+  background-color: #FCF6F4;
 }
 `;
 
