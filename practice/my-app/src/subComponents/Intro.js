@@ -39,6 +39,11 @@ const Text = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  & > *last-child {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  font-size: calc(1em + 1vw);
 `;
 const Intro = () => {
   return (
