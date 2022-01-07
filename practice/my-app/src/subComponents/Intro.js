@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const Box = styled.div`
+const Box = styled(motion.div)`
   z-index: 1;
   position: absolute;
   left: 50%;
@@ -47,7 +48,11 @@ const Text = styled.div`
 `;
 const Intro = () => {
   return (
-    <Box>
+    <Box
+      initial={{ height: 0 }}
+      animate={{ height: "30vh" }}
+      transition={{ type: "spring", duration: 2, delay: 1 }}
+    >
       <SubBox>
         <Text>
           <h4>Hi! My name is Kateryna Ueno and I am a Front-end developer</h4>
