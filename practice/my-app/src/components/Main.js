@@ -6,6 +6,7 @@ import SocialIcons from "../subComponents/SocialIcons";
 import { NavLink } from "react-router-dom";
 import { YinYang } from "../AllSvgs";
 import Intro from "../subComponents/Intro";
+import { motion } from "framer-motion";
 
 const MainContainer = styled.div`
 background: &{props => props.theme.body};
@@ -28,6 +29,7 @@ const Contact = styled(NavLink)`
   top: 2rem;
   right: calc(1rem + 2vw);
   text-decoration: none;
+  border: none;
   z-index: 1;
   cursor: pointer;
 `;
@@ -136,20 +138,30 @@ const Main = () => {
           target="_blank"
           to={{ pathname: "mailto:katerynaueno@gmail.com" }}
         >
-          <h3>Say hi...</h3>
+          <motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Say hi...
+          </motion.h3>
         </Contact>
         <BLOG to="/blog">
-          <h3>Blog</h3>
+          <motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Blog
+          </motion.h3>
         </BLOG>
         <Work to="/work" click={click}>
-          <h3>Work</h3>
+          <motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            Work
+          </motion.h3>
         </Work>
         <Bottom>
           <About to="/about" click={click}>
-            <h3>About me</h3>
+            <motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              About me
+            </motion.h3>
           </About>
           <MySkills to="/skills">
-            <h3>My skills</h3>
+            <motion.h3 whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              My skills
+            </motion.h3>
           </MySkills>
         </Bottom>
       </Container>
