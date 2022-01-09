@@ -9,8 +9,21 @@ const Container = styled(NavLink)`
   padding: 1rem;
 `;
 
-const SingleBlog = () => {
-  return <Container to="/">blog</Container>;
+const Image = styled.div`
+  background-image: ${(props) => `url(${props.img})`};
+  width: 100%;
+  height: 60%;
+  background-size: cover;
+  border: 1px solid transparent;
+  background-position: center center;
+`;
+const SingleBlog = (props) => {
+  const [name, tags, date, imgSrc, link] = props.blog;
+  return (
+    <Container target="-blank" to={{ pathname: link }}>
+      <Image img={imgSrc} />
+    </Container>
+  );
 };
 
 export default SingleBlog;
