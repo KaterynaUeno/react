@@ -31,6 +31,10 @@ const Image = styled.div`
   background-size: cover;
   border: 1px solid transparent;
   background-position: center center;
+
+  ${Container}:hover & {
+    border: 1px solid ${(props) => props.theme.body};
+  }
 `;
 
 const Title = styled.h3`
@@ -40,6 +44,10 @@ const Title = styled.h3`
   font-family: "Karla", sans-serif;
   font-weight: 700;
   border-bottom: 1px solid ${(props) => props.theme.text};
+
+  ${Container}:hover & {
+    border-bottom: 1px solid ${(props) => props.theme.body};
+  }
 `;
 
 const Hashtag = styled.div`
