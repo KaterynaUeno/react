@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import img from "../assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg";
 import LogoComponent from "../subComponents/LogoComponent";
@@ -37,13 +37,19 @@ const Grid = styled.div`
   grid-gap: calc(1rem+2vw);
 `;
 const Blog = () => {
+  const [numbers, setNumbers] = useState(0);
+
+  useEffect(() => {
+    let num = (window.innerHeight - 70) / 30;
+    setNumbers(parseInt(num));
+  }, []);
   return (
     <MainContainer>
       <Container>
         <LogoComponent />
         <PowerButton />
         <SocialIcons />
-        <AnchorComponent />
+        <AnchorComponent numbers={numbers} />
         <Center>
           <Grid>
             {Blogs.map((blog) => {
