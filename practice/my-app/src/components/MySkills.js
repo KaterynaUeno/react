@@ -1,6 +1,10 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme } from "./Themes";
+import { Design, Develop } from "../AllSvgs";
+import PowerButton from "../subComponents/PowerButton";
+import SocialIcons from "../subComponents/SocialIcons";
+import LogoComponent from "../subComponents/LogoComponent";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -21,13 +25,90 @@ const Box = styled.div`
   height: 50vh;
   z-index: 3;
   line-height: 1.5;
+  font-family: "Ubuntu Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover {
+    color: ${(props) => props.theme.body};
+    background-color: ${(props) => props.theme.text};
+  }
+`;
+
+const Title = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1em + 1vw);
+
+  ${Main}: hover & {
+    & > * {
+      fill: ${(props) => props.theme.text};
+    }
+  }
+
+  & > *:first-child {
+    margin-right: 1rem;
+  }
+`;
+
+const Description = styled.div`
+  color: ${(props) => props.theme.text};
+  font-size: calc(1em +1vw);
+  padding: 0.5rem 0;
+
+  strong {
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  ul,
+  p {
+    margin-left: 1rem;
+  }
+
+  ${Main}: hover & {
+    color: ${(props) => props.theme.body};
+  }
 `;
 const MySkills = () => {
   return (
     <ThemeProvider theme={lightTheme}>
       <Main>
-        <Box>1</Box>
-        <Box>2</Box>
+        <PowerButton />
+        <LogoComponent />
+        <SocialIcons />
+        <Box>
+          <Title>
+            <Design width={40} height={40} />
+            Creator
+          </Title>
+          <Description>
+            I like to transform simple ideas into minimalistic web applications.
+          </Description>
+          <Description>
+            <strong>I create</strong>
+            <ul>
+              <li>Web Design</li>
+              <li>Mobile apps</li>
+            </ul>
+          </Description>
+        </Box>
+        <Box>
+          {" "}
+          <Title>
+            <Develop width={40} height={40} />
+            Frontend Developer
+          </Title>
+          <Description>
+            I am using HTML, CSS and Java Script to create responsive designs.
+          </Description>
+          <Description>
+            <strong>Skills</strong>
+            <p>HTML, CSS, Java Script, React, Bootstrap, MUI, etc.</p>
+          </Description>
+        </Box>
       </Main>
     </ThemeProvider>
   );
