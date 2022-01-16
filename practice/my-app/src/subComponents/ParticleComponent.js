@@ -4,6 +4,7 @@ import Particles from "react-tsparticles";
 
 import configDark from "../config/particlesjs-config.json";
 import configLight from "../config/particlesjs-config-light.json";
+
 const Box = styled.div`
   position: absolute;
   top: 0;
