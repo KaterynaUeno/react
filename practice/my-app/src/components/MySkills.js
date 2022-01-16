@@ -5,6 +5,7 @@ import { Design, Develop } from "../AllSvgs";
 import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import LogoComponent from "../subComponents/LogoComponent";
+import ParticleComponent from "../subComponents/ParticleComponent";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -43,7 +44,7 @@ const Title = styled.h2`
   align-items: center;
   font-size: calc(1em + 1vw);
 
-  ${Main}:hover& {
+  ${Main}:hover & {
     & > * {
       fill: ${(props) => props.theme.body};
     }
@@ -78,8 +79,9 @@ const MySkills = () => {
     <ThemeProvider theme={lightTheme}>
       <Main>
         <PowerButton />
-        <LogoComponent />
-        <SocialIcons />
+        <LogoComponent theme="light" />
+        <SocialIcons theme="light" />
+        <ParticleComponent theme="light" />
         <Box>
           <Title>
             <Design width={40} height={40} />
