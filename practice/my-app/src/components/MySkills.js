@@ -17,7 +17,7 @@ const Main = styled.div`
 `;
 
 const Box = styled.div`
-  border: 2px solid ${(props) => props.theme.tetx};
+  border: 2px solid ${(props) => props.theme.texß};
   color: ${(props) => props.theme.text};
   background-color: ${(props) => props.theme.body};
   padding: 2rem;
@@ -29,6 +29,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
 
   &:hover {
     color: ${(props) => props.theme.body};
@@ -42,9 +43,9 @@ const Title = styled.h2`
   align-items: center;
   font-size: calc(1em + 1vw);
 
-  ${Main}: hover & {
+  ${Main}:hover& {
     & > * {
-      fill: ${(props) => props.theme.text};
+      fill: ${(props) => props.theme.body};
     }
   }
 
@@ -68,7 +69,7 @@ const Description = styled.div`
     margin-left: 1rem;
   }
 
-  ${Main}: hover & {
+  ${Main}:hover & {
     color: ${(props) => props.theme.body};
   }
 `;
