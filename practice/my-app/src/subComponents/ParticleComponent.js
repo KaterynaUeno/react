@@ -13,10 +13,10 @@ const Box = styled.div`
   bottom: 0;
   z-index: 0;
 `;
-const ParticleComponent = () => {
+const ParticleComponent = (props) => {
   return (
     <Box>
-      <Particles />
+      <Particles params={props.theme === "light" ? configLight : configDark} />
     </Box>
   );
 };
