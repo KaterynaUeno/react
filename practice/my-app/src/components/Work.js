@@ -9,8 +9,8 @@ import { WorkData } from "../data/WorkData";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
-  width: 100vw;
-  height: 100vh;
+
+  height: 400vh;
   position: relative;
   overflow: hidden;
 `;

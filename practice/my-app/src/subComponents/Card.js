@@ -26,13 +26,38 @@ const Title = styled.h2`
   font-size: calc(1em + 0.5vw);
 `;
 
-const Description = styled.div``;
+const Description = styled.div`
+  font-size: calc(0.8em + 0.3vw);
+  font-family: "Karla", sans-serif;
+  font-weight: 500;
+`;
+
+const Tags = styled.div`
+  border-top: solid 2px ${(props) => props.theme.body};
+  padding-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  ${Box}:hover & {
+    border-top: 2px solid ${(props) => props.theme.text};
+  }
+`;
+
+const Tag = styled.span`
+  margin-right: 1rem;
+  font-size: calc(0.8em + 0.3vw);
+`;
 const Card = (props) => {
-  const { id, name, description } = props.data;
+  const { id, name, description, tags } = props.data;
   return (
     <Box key={id}>
       <Title>{name}</Title>
       <Description>{description}</Description>
+      <Tags>
+        {tags.map((tag, id) => {
+          return <Tag key={id}>#{tag}</Tag>;
+        })}
+      </Tags>
     </Box>
   );
 };
