@@ -6,6 +6,7 @@ import SocialIcons from "../subComponents/SocialIcons";
 import LogoComponent from "../subComponents/LogoComponent";
 import Card from "../subComponents/Card";
 import { WorkData } from "../data/WorkData";
+import { YinYang } from "../AllSvgs";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -24,15 +25,27 @@ const Box = styled.ul`
   color: white;
 `;
 
+const Rotate = styled.span`
+display: block;
+position: fixed;
+right: 1rem;
+bottom: 1rem;
+width 80px;
+height: 80px;
+z-index: 1;
+`;
 const Work = () => {
   const ref = useRef(null);
-
+  const yinyang = useRef(null);
   useEffect(() => {
     let element = ref.current;
 
     const rotate = () => {
       element.style.transform = `translateX(${-window.pageYOffset}px)`;
+      return (yinyang.current.style.transform =
+        "rotate(" + -window.pageYOffset + "deg)");
     };
+
     window.addEventListener("scroll", rotate);
     return () => window.removeEventListener("scroll", rotate);
   }, []);
@@ -47,6 +60,9 @@ const Work = () => {
             <Card key={data.id} data={data} />
           ))}
         </Box>
+        <Rotate ref={yinyang}>
+          <YinYang width={80} height={80} fill={darkTheme.text} />
+        </Rotate>
       </Main>
     </ThemeProvider>
   );
