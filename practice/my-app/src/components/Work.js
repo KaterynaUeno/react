@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./Themes";
 import PowerButton from "../subComponents/PowerButton";
@@ -9,10 +9,10 @@ import { WorkData } from "../data/WorkData";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
-
-  height: 400vh;
+  height: 300vh;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
 `;
 
 const Box = styled.ul`
@@ -25,13 +25,24 @@ const Box = styled.ul`
 `;
 
 const Work = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let element = ref.current;
+
+    const rotate = () => {
+      element.style.transform = `translateX(${-window.pageYOffset}px)`;
+    };
+    window.addEventListener("scroll", rotate);
+    return () => window.removeEventListener("scroll", rotate);
+  }, []);
   return (
     <ThemeProvider theme={darkTheme}>
       <Main>
         <PowerButton />
         <LogoComponent theme="dark" />
         <SocialIcons theme="dark" />
-        <Box>
+        <Box ref={ref}>
           {WorkData.map((data) => (
             <Card key={data.id} data={data} />
           ))}
