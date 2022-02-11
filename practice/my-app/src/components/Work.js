@@ -8,6 +8,7 @@ import Card from "../subComponents/Card";
 import { WorkData } from "../data/WorkData";
 import { YinYang } from "../AllSvgs";
 import CapitalLetters from "../subComponents/CapitalLetters";
+import { motion } from "framer-motion";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -17,7 +18,7 @@ const Main = styled.div`
   align-items: center;
 `;
 
-const Box = styled.ul`
+const Box = styled(motion.ul)`
   position: fixed;
   top: 12rem;
   left: calc(10rem + 15vw);
@@ -35,6 +36,18 @@ width 80px;
 height: 80px;
 z-index: 1;
 `;
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+
+    transition: {
+      staggerChildren: 0.5,
+      duration: 0.5,
+    },
+  },
+};
 const Work = () => {
   const ref = useRef(null);
   const yinyang = useRef(null);
@@ -56,7 +69,7 @@ const Work = () => {
         <PowerButton />
         <LogoComponent theme="dark" />
         <SocialIcons theme="dark" />
-        <Box ref={ref}>
+        <Box ref={ref} variants={container} initial="hidden" animate="show">
           {WorkData.map((data) => (
             <Card key={data.id} data={data} />
           ))}
