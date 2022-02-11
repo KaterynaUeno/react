@@ -6,6 +6,7 @@ import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import LogoComponent from "../subComponents/LogoComponent";
 import ParticleComponent from "../subComponents/ParticleComponent";
+import CapitalLetters from "../subComponents/CapitalLetters";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -112,6 +113,7 @@ const MySkills = () => {
             <p>HTML, CSS, Java Script, React, Bootstrap, MUI, etc.</p>
           </Description>
         </Box>
+        <CapitalLetters text="SKILLS" top="55%" right="30%" />
       </Main>
     </ThemeProvider>
   );

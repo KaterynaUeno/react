@@ -29,7 +29,7 @@ const Box = styled.div`
   background-filter: blur(5px);
 
   position: absolute;
-  left: calc(5rem+5vw);
+  left: calc(7rem + 5vw);
   top: 10rem;
   font-family: "Ubuntu Mono", monospace;
   h2 {

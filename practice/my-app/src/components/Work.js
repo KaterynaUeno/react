@@ -7,6 +7,7 @@ import LogoComponent from "../subComponents/LogoComponent";
 import Card from "../subComponents/Card";
 import { WorkData } from "../data/WorkData";
 import { YinYang } from "../AllSvgs";
+import CapitalLetters from "../subComponents/CapitalLetters";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.body};
@@ -63,6 +64,7 @@ const Work = () => {
         <Rotate ref={yinyang}>
           <YinYang width={80} height={80} fill={darkTheme.text} />
         </Rotate>
+        <CapitalLetters text="WORK" top="10%" right="20%" />
       </Main>
     </ThemeProvider>
   );

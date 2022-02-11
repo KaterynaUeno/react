@@ -7,6 +7,7 @@ import SocialIcons from "../subComponents/SocialIcons";
 import { Blogs } from "../data/BlogData";
 import SingleBlog from "../components/SingleBlog";
 import AnchorComponent from "../subComponents/Anchor";
+import CapitalLetters from "../subComponents/CapitalLetters";
 
 const MainContainer = styled.div`
   background-image: url(${img});
@@ -57,6 +58,7 @@ const Blog = () => {
             })}
           </Grid>
         </Center>
+        <CapitalLetters text="BLOG" top="5rem" left="50rem" />
       </Container>
     </MainContainer>
   );
