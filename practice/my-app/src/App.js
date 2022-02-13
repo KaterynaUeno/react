@@ -9,15 +9,17 @@ import Blog from "./components/Blog";
 import Work from "./components/Work";
 import MySkills from "./components/MySkills";
 import { AnimatePresence } from "framer-motion";
+import Sound from "./subComponents/Sound";
 
 function App() {
-  const location = useLocation();
+  // const location = useLocation();
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={lightTheme}>
+        <Sound />
         <AnimatePresence exitBeforeEnter>
-          <Switch location={location} key={location.pathname}>
+          <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/about" component={About} />
             <Route exact path="/blog" component={Blog} />
